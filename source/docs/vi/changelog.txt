@@ -1,0 +1,241 @@
+Phiên bản 0.3.0
+Tính năng mới:
+- Danh sách Video đề xuất: Thêm nút "Video đề xuất" trong Trình phát. Thay vì để hệ thống tự chọn bài tiếp theo, bạn có thể mở danh sách này để chủ động chọn 1 trong 19 video liên quan. (Lưu ý: Tính năng hoạt động tốt nhất với nội dung âm nhạc).
+Cải tiến & Khả năng tiếp cận:
+- Thông báo khi tua: Phần mềm sẽ đọc thời gian hiện tại mỗi khi bạn thực hiện thao tác tua trong trình phát.
+- Cài đặt thông minh: Danh sách chọn "Chất lượng chuyển đổi MP3" trong Cài đặt giờ đây chỉ hiển thị khi bạn chọn định dạng là MP3, giúp giao diện gọn gàng và tránh gây nhầm lẫn.
+- Trạng thái nút Phát: Cải thiện thông báo trạng thái của nút Phát/Tạm dừng rõ ràng hơn.
+- Hệ thống tua: Điều chỉnh logic tua video. Khi tua quá thời lượng video, trình phát sẽ quay lại phát từ đầu thay vì rơi vào trạng thái im lặng.
+Sửa lỗi:
+- Vị trí Tab: Sửa lỗi trình đọc màn hình báo sai thông tin vị trí (Object position) của các thẻ ở màn hình chính.
+- Điều hướng Tab: Phím `Ctrl+Tab` và `Ctrl+Shift+Tab` giờ đây hoạt động chính xác để chuyển đổi qua lại giữa các thẻ điều hướng.
+- Lỗi tự động chuyển bài: Khắc phục lỗi video vẫn tự động chuyển sang bài tiếp theo dù đã tắt "Tự động chuyển bài" (xảy ra khi đang bật tính năng "Bỏ qua khoảng lặng").
+Phiên bản 0.2.9.4
+Tính năng mới:
+- Tìm kiếm bằng giọng nói: Thêm nút "Tìm kiếm bằng giọng nói" trong giao diện tìm kiếm. Bạn cần di chuyển (Tab) sang nút này, sau đó Giữ phím Khoảng trắng (Space) để nói nội dung cần tìm và nhả phím ra để thực hiện.
+- Phím tắt Trình phát: Thêm phím tắt Ctrl + K để sao chép liên kết của video đang phát.
+Sửa lỗi:
+- Bỏ qua khoảng lặng: Sửa lỗi khiến một video bị phát lại 2 lần do xung đột với tính năng bỏ qua khoảng lặng.
+- Lịch sử Bộ sưu tập: Khắc phục lỗi logic khiến việc phát video từ Bộ sưu tập không được lưu vào Lịch sử xem nếu đang bật chế độ lặp lại.
+Cải tiến:
+- Hiệu suất: Khắc phục các vấn đề có thể gây treo ứng dụng bằng cách tối ưu hóa các tác vụ chạy ngầm.
+- Đa ngôn ngữ: Chuyển đổi một số văn bản từ dạng mã cứng (hardcoded) sang dạng có thể dịch được, giúp phần mềm hiển thị ngôn ngữ chuẩn xác hơn.
+Phiên bản 0.2.9.3
+Sửa lỗi quan trọng:
+- Logic Tải xuống: Khắc phục lỗi khiến nút "Tải xuống" lưu nhầm kết quả tìm kiếm trước đó thay vì video Đề xuất đang phát. Giờ đây trình tải xuống đã nhận diện chính xác video đang hoạt động.
+Tính năng mới:
+- Phát Danh sách phát từ Liên kết: Giờ đây bạn có thể dán đường dẫn (link) của một danh sách phát vào phần mềm để phát trực tiếp.
+Thay đổi lớn: Cập nhật hệ thống Phím tắt
+Hệ thống phím tắt đã được sắp xếp và thay đổi lại đáng kể để phù hợp và logic hơn với các chức năng. Vui lòng xem Hướng dẫn sử dụng mới để nắm bắt toàn bộ danh sách.
+Các thay đổi nổi bật:
+- Ctrl + F: Yêu thích (Thêm hoặc Xóa video đang chọn khỏi danh sách Yêu thích).
+- Ctrl + L: Thêm vào Bộ sưu tập (Mở menu thêm video vào bộ sưu tập).
+Tài liệu:
+- Cập nhật Hướng dẫn sử dụng: Tài liệu hướng dẫn sử dụng A11YTube đã được viết lại hoàn toàn, cập nhật các phím tắt và tính năng mới. Bạn có thể xem bằng cách nhấn F1 hoặc truy cập thẻ Trợ giúp.
+Phiên bản 0.2.9.2
+Tính năng mới:
+- Chuyển tiếp liền mạch (Seamless Transition): Trình phát giờ đây hỗ trợ chuyển bài mượt mà. Bài hát hiện tại vẫn tiếp tục phát trong khi bài tiếp theo được tải ngầm (preload), mang lại trải nghiệm nghe liên tục, không bị ngắt quãng hay im lặng đột ngột giữa các bài.
+Cải tiến & Ổn định:
+- Bảo vệ chống Spam lệnh: Áp dụng cơ chế giới hạn thao tác khi bấm liên tục nút "Bài tiếp" hoặc "Bài trước".
+  + Nếu một bài hát đang được tải, các lệnh bấm tiếp theo sẽ bị bỏ qua.
+  + Hệ thống sẽ thông báo bằng giọng nói "Vui lòng đợi, đang tải bài..." để tránh làm treo ứng dụng.
+- Sửa lỗi ổn định:
+  + Khắc phục lỗi xung đột luồng (race conditions) trong quá trình tự động chuyển bài.
+  + Sửa một số lỗi nhỏ khác.
+Bảo trì:
+- Dọn dẹp mã nguồn: Xóa các dòng mã thừa và tối ưu hóa cấu trúc mã nguồn.
+Phiên bản 0.2.9.1
+Sửa lỗi nghiêm trọng:
+- Bỏ qua khoảng lặng (Skip Silence): Khắc phục lỗi khiến tính năng này chỉ hoạt động với bài hát đầu tiên. Giờ đây, thời gian bắt đầu (đã loại bỏ khoảng lặng) sẽ được áp dụng chính xác cho mọi bài hát tiếp theo, bao gồm cả các video tự động chuyển hoặc video đề xuất.
+Cải tiến Trình phát:
+- Thanh thời gian: Thanh thời gian sẽ tự động đặt lại về 0 khi video đang tải hoặc đã dừng hẳn, giúp tránh hiển thị thời gian sai lệch và ngăn ngừa lỗi trình phát.
+- Điều chỉnh âm lượng: Cải thiện logic cho phép người dùng điều chỉnh âm lượng (0-100) ngay cả khi video đang dừng hoặc đang tải. Giá trị sẽ được lưu lại và áp dụng ngay lập tức khi video bắt đầu phát.
+Cập nhật Khả năng tiếp cận:
+- Thông báo nút bấm: Tinh chỉnh phản hồi của trình đọc màn hình đối với các nút điều khiển (Phát, Bài tiếp, Bài trước...). Khi nhấn Space hoặc Enter, lệnh sẽ được thực thi ngay lập tức mà không còn đọc thừa từ "pressed" (đã nhấn), giúp trải nghiệm nghe thoáng hơn.
+Phiên bản 0.2.9
+Hoàn thiện tính năng:
+- Tối ưu hóa khởi động: Các thử nghiệm tối ưu tốc độ khởi động ứng dụng đã được hoàn tất và đánh dấu hoàn thành.
+Tính năng mới:
+- Video đề xuất (Thử nghiệm): Thay đổi hành vi của tính năng "Tự động phát bài tiếp". Giờ đây, khi bạn phát một video từ Kết quả tìm kiếm hoặc Lịch sử xem, phần mềm sẽ tự động chọn và phát một video đề xuất có liên quan, thay vì chuyển sang mục kế tiếp trong danh sách như trước đây.
+Cải tiến:
+- Trình phát tự động: Cải thiện độ ổn định và logic xử lý của hệ thống phát tự động.
+Phiên bản 0.2.8
+Cải tiến:
+- Bỏ qua khoảng lặng: Cải thiện thuật toán cho tính năng "Bỏ qua khoảng lặng" giúp phát hiện và bỏ qua các đoạn im lặng chính xác hơn.
+Sửa lỗi:
+- Lỗi phát video: Khắc phục lỗi nghiêm trọng khiến video không thể phát được.
+- Điều khiển Phát/Tạm dừng: Sửa lỗi tính năng Phát/Tạm dừng (Space/Shift+Space) hoạt động không đúng cách.
+- Thư mục tải xuống: Sửa lỗi tính năng thay đổi đường dẫn thư mục tải xuống trong Cài đặt không hoạt động.
+Phiên bản 0.2.7
+Hoàn thiện tính năng:
+- Bản âm thanh đa ngôn ngữ: Tính năng đã hoạt động ổn định và được đánh dấu hoàn thành.
+- Tải chậm (Lazy Loading): Cơ chế tải chậm đã được hoàn thiện, đảm bảo khởi động nhanh và ổn định.
+Tính năng mới:
+- Bỏ qua khoảng lặng (Skip Silence - Thử nghiệm): Tính năng mới dành cho phát danh sách. Khi chuyển bài tự động, phần mềm sẽ bỏ qua các đoạn im lặng trong video hoặc bản nhạc, mang lại trải nghiệm nghe liên tục liền mạch.
+- Thông báo NVDA: Thêm tùy chọn "Đọc thông báo khi cửa sổ không hoạt động" trong Cài đặt (Mặc định: Tắt). Giúp tránh làm phiền khi bạn đang làm việc ở cửa sổ khác.
+Cải tiến & Hiệu suất:
+- Tốc độ chuyển bài: Cải thiện đáng kể tốc độ khi chuyển sang bài tiếp theo trong cả chế độ phát tuần tự và ngẫu nhiên.
+- Thông tin Bộ sưu tập: Hiển thị tổng số lượng video hiện có trong mỗi Bộ sưu tập.
+- Xử lý lỗi Danh sách phát: Nếu video gặp lỗi tải, ứng dụng sẽ tự động bỏ qua và chuyển bài sau 1 giây thay vì hiện hộp thoại chặn màn hình.
+- Trộn bài thông minh: Cải thiện thuật toán trộn bài. Khi phát hết danh sách và trộn lại, bài đầu tiên của lượt mới sẽ không trùng với bài vừa phát xong.
+Sửa lỗi:
+- Chuyển đổi bản âm thanh: Trình phát giờ đây luôn ghi nhớ và tiếp tục phát từ vị trí hiện tại khi đổi ngôn ngữ, ngay cả khi tắt tính năng "Tiếp tục xem".
+Phiên bản 0.2.6
+Tính năng mới: Hệ thống & Quản lý dữ liệu
+- Sao lưu & Khôi phục: Đã thêm tính năng sao lưu và khôi phục cấu hình toàn diện. Giờ đây bạn có thể dễ dàng chuyển đổi cài đặt, lịch sử và bộ sưu tập giữa các thiết bị.
+- Nhập/Xuất Bộ sưu tập: Hỗ trợ chia sẻ bộ sưu tập của bạn cho người khác hoặc nhập bộ sưu tập từ bên ngoài.
+- Quản lý Cookies: Cho phép xóa tệp `cookies.txt` đã nhập. Hệ thống cũng sẽ tự động thông báo nếu tệp cookies bị hết hạn.
+- Mở thư mục cấu hình: Thêm nút truy cập nhanh thư mục chứa file cấu hình trong phần Cài đặt.
+Tính năng mới: Bộ sưu tập & Danh sách phát
+- Thao tác Bộ sưu tập:
+  + Đổi tên: Bấm F2 hoặc dùng menu ngữ cảnh để đổi tên bộ sưu tập.
+  + Nhân bản Danh sách phát: Chép một danh sách phát từ YouTube thành một Bộ sưu tập cục bộ mới.
+  + Kết hợp Danh sách phát: Gộp các bài trong danh sách phát YouTube vào một Bộ sưu tập có sẵn.
+  + Gộp Bộ sưu tập: Kết hợp bộ sưu tập nguồn vào bộ sưu tập đích (bộ sưu tập nguồn vẫn được giữ nguyên).
+- Phát ngẫu nhiên (Shuffle): Tính năng phát ngẫu nhiên hiện đã hoạt động với cả danh sách phát trong kết quả tìm kiếm (qua Menu ngữ cảnh).
+- Phím tắt nhanh trong Kết quả tìm kiếm:
+  + Ctrl+Shift+L: Thêm/Xóa mục đang chọn khỏi Yêu thích.
+  + Ctrl+Shift+C: Thêm mục đang chọn vào Bộ sưu tập.
+Phím tắt & Điều khiển Trình phát mới:
+Hệ thống phím tắt cho Trình phát đã được bổ sung đầy đủ:
+1. Điều khiển Phát
+- Shift + Space: Phát / Tạm dừng.
+- Home: Quay về đầu video.
+- 1 - 9: Tua đến 10% - 90% thời lượng.
+- Dấu - / Dấu = : Giảm / Tăng bước nhảy tua (Thay đổi số giây sẽ tua khi bấm phím Mũi tên Trái/Phải).
+- Mũi tên Trái / Phải: Tua lùi / Tới (theo bước nhảy tua hiện tại; chỉ hoạt động khi tiêu điểm ở nút điều khiển hoặc Toàn màn hình).
+2. Điều hướng
+- Shift + N: Bài tiếp theo.
+- Shift + B: Bài trước đó.
+3. Tiện ích & Tính năng
+- L: Thêm/Xóa khỏi Yêu thích.
+- C: Mở menu thêm vào Bộ sưu tập.
+- Ctrl + Shift + E: Bật/Tắt Toàn màn hình.
+- Ctrl + Shift + L: Đọc tổng thời lượng video.
+- Ctrl + Shift + T: Đọc thời gian đã phát.
+4. Chế độ & Tốc độ
+- R: Bật/Tắt Lặp lại.
+- N: Bật/Tắt Tự động chuyển bài.
+- S: Tốc độ Nhanh (1.4x).
+- D: Tốc độ Bình thường (1.0x).
+- F: Tốc độ Chậm (0.6x).
+- Mũi tên Lên / Xuống: Tăng / Giảm âm lượng (chỉ khi tiêu điểm ở nút điều khiển hoặc Toàn màn hình).
+5. Hệ thống
+- Ctrl + D: Tải xuống video hiện tại.
+- Ctrl + Shift + D: Xem mô tả.
+- Ctrl + L: Sao chép liên kết.
+- Ctrl + B: Mở trong trình duyệt web.
+- Ctrl + Shift + S: Mở Cài đặt.
+- ESC: Đóng trình phát.
+Phiên bản 0.2.5
+Tính năng mới: Hệ thống Bộ sưu tập (Collections)
+- Trình quản lý Bộ sưu tập: Tạo, xóa và quản lý các bộ sưu tập riêng của bạn. Truy cập tính năng này từ tab Trang chủ hoặc phím tắt Ctrl+Shift+L.
+- Phân loại video: Khi đang phát video, bạn có thể thêm video đó vào các bộ sưu tập cụ thể (ví dụ: Nhạc EDM, Nhạc Pop, Sách nói...) tương tự như thêm vào Yêu thích.
+- Phát ngẫu nhiên (Shuffle Play): Tính năng phát ngẫu nhiên cho bộ sưu tập. Phần mềm sẽ tạo danh sách phát ngẫu nhiên và tự động trộn lại khi phát hết. Rất thích hợp để nghe nhạc nền khi ngủ hoặc làm việc.
+Tính năng mới & Cải tiến giao diện:
+- Nút Menu ngữ cảnh: Bổ sung nút bấm hiển thị bên cạnh các mục. Giờ đây bạn có thể nhấn Tab để mở Menu ngữ cảnh thay vì bắt buộc phải dùng Chuột phải hoặc Shift+F10.
+- Thao tác với Kênh: Thêm tùy chọn "Đi tới kênh" và "Tải xuống kênh" vào menu ngữ cảnh của video.
+Hiệu suất & Tối ưu hóa:
+- Đánh chỉ mục Cơ sở dữ liệu: Thêm chỉ mục (index) cho các bảng Yêu thích, Lịch sử và Bộ sưu tập. Việc kiểm tra video có trong danh sách hay không giờ đây diễn ra tức thì, đảm bảo phần mềm vẫn mượt mà ngay cả khi lưu hàng ngàn mục.
+- Tối ưu hóa Trình duyệt tìm kiếm: Sử dụng cơ chế kiểm tra cơ sở dữ liệu nhanh, loại bỏ độ trễ khi di chuyển con trỏ qua danh sách kết quả.
+- Lưu trữ: Tối ưu hóa quy trình lưu cài đặt (ghi hàng loạt) và loại bỏ các thao tác xóa dư thừa trong cơ sở dữ liệu.
+Thay đổi về Logic:
+- Lịch sử xem: Tính năng Lịch sử hiện phụ thuộc vào tùy chọn "Tiếp tục xem" (Continue watching). Lịch sử sẽ chỉ được ghi lại nếu bạn bật tùy chọn này trong Cài đặt.
+Sửa lỗi:
+- Lỗi giao diện phát (MediaGui): Khắc phục lỗi khiến nút "Thêm vào Yêu thích" và "Thêm vào Bộ sưu tập" không hoạt động khi phát video trực tiếp từ một Bộ sưu tập.
+- Ổn định trình tải xuống: Sửa lỗi tiềm ẩn gây crash phần mềm (Lỗi chia cho 0) khi tải xuống.
+- Bộ lọc tìm kiếm: Loại bỏ các mã lệnh dư thừa trong bộ lọc tìm kiếm.
+Phiên bản 0.2.4
+Tính năng mới:
+- Bản âm thanh đa ngôn ngữ (Thử nghiệm): Hỗ trợ tính năng thay đổi bản âm thanh (Audio Track). Giờ đây bạn có thể chọn nghe các ngôn ngữ khác nhau nếu video đó hỗ trợ nhiều luồng âm thanh (ví dụ: video lồng tiếng).
+- Cập nhật quản lý Thư viện:
+  + Lịch sử: Thêm nút "Xóa khỏi lịch sử" và hỗ trợ phím Delete để xóa nhanh mục đã chọn.
+  + Yêu thích: Thêm nút "Xóa danh sách Yêu thích" để dọn dẹp toàn bộ danh sách.
+Cải tiến:
+- Giao diện ngữ cảnh: Hộp kiểm "Tự động phát bài tiếp" (Auto Next) sẽ ẩn đi khi sử dụng Trình phát đơn (nơi không có bài trước/sau) để giao diện gọn gàng hơn.
+- Hiệu suất: Tối ưu hóa quá trình chuyển bài hát sang luồng nền (Non-blocking). Điều này giúp giao diện phần mềm không còn bị đơ/treo tạm thời trong lúc đang tải bài mới.
+Sửa lỗi:
+- Phím tắt Toàn màn hình: Khắc phục lỗi khiến các phím tắt không phản hồi khi ứng dụng đang ở chế độ Toàn màn hình.
+- Ổn định hệ thống: Sửa lỗi xung đột dữ liệu (race condition) liên quan đến hộp kiểm "Thêm vào Yêu thích", giúp trình phát hoạt động ổn định hơn.
+Phiên bản 0.2.3
+Tính năng mới:
+- Chế độ Rạp chiếu phim (Cinema Mode):
+  + Khi bật Toàn màn hình, toàn bộ thanh trượt và nút điều khiển sẽ ẩn đi.
+  + Chỉ hiển thị duy nhất nút "Thoát toàn màn hình", trình đọc màn hình sẽ tự động focus vào nút này.
+  + Các phím tắt điều khiển (Phát/Tạm dừng, Tua) vẫn hoạt động bình thường.
+- Cải thiện khởi động:
+  + Thêm thông báo "Đang khởi động" để người dùng biết phần mềm đã nhận lệnh (hữu ích khi lần đầu chạy mất hơn 20 giây).
+  + Thêm Màn hình chào (Splash Screen) khi mở ứng dụng.
+- Cơ chế "Một phiên bản" (Single Instance):
+  + Nếu bạn mở phần mềm khi nó đang chạy, hệ thống sẽ tự động tìm và đưa cửa sổ cũ lên trước mặt thay vì chạy thêm một bản sao mới.
+- Phím tắt mới (Màn hình chính):
+  + Ctrl+U: Kiểm tra cập nhật.
+  + Ctrl+Shift+C: Xem nhật ký thay đổi.
+Cải tiến:
+- Tối ưu hóa Trình phát: Viết lại logic trình phát để khởi tạo một phiên bản VLC độc lập, hoàn toàn mới cho mỗi video. Điều này giúp bộ nhớ sạch sẽ hơn và tránh xung đột trạng thái.
+- Quản lý luồng & Thoát ứng dụng: Chuyển toàn bộ luồng chạy ngầm (tải xuống, lấy mô tả...) sang dạng daemon. Đảm bảo ứng dụng đóng ngay lập tức khi nhấn Alt+F4, loại bỏ lỗi ứng dụng chạy ngầm (zombie) không tắt hẳn.
+- Tương tác hệ thống: Thay đổi cách mở thư mục tải xuống bằng lệnh chuẩn `os.startfile`, hoạt động ổn định hơn trên các bản Windows tùy biến so với lệnh `explorer.exe` cũ.
+- Logic Cookies: Cải thiện logic xác thực. Việc nhập `cookies.txt` giờ đây hoạt động chính xác, cho phép xem cả video giới hạn độ tuổi lẫn video công khai bình thường mà không gặp lỗi.
+Sửa lỗi:
+- Ổn định Cơ sở dữ liệu: Sửa lỗi xung đột luồng (thread conflict) khi lưu Lịch sử hoặc Yêu thích, giúp ứng dụng không bị crash khi ghi dữ liệu.
+- Treo khi cập nhật: Khắc phục lỗi ứng dụng bị treo trong quá trình cập nhật.
+- Lỗi phát video: Đã xử lý triệt để các lỗi liên quan đến `h264` và `prefetch stream`.
+- Mất cửa sổ: Sửa lỗi mất cửa sổ ứng dụng khi sử dụng Alt-Tab.
+Phiên bản 0.2.2
+Cải tiến & Tính năng:
+- Lưu trạng thái Toàn màn hình: Ứng dụng giờ đây sẽ ghi nhớ tùy chọn Toàn màn hình của bạn (được lưu trong settings.ini) và tự động áp dụng cho các lần xem sau.
+- Tối ưu hóa khởi động (Thử nghiệm): Tiếp tục thực hiện các điều chỉnh thử nghiệm để cải thiện tốc độ khởi động của phần mềm.
+Sửa lỗi:
+- Làm mới danh sách Yêu thích: Khắc phục lỗi danh sách Yêu thích không tự động cập nhật sau khi xóa một video trong một số trường hợp nhất định.
+Phiên bản 0.2.1
+Tính năng mới & Cài đặt:
+- Nhập Cookies (Vượt xác minh Bot): Bổ sung giải pháp cho lỗi "Sign in to confirm you’re not a bot" từ YouTube. Bạn có thể nhập tệp `cookies.txt` trong phần Cài đặt để xác thực. Nút hướng dẫn "Cách lấy cookies.txt" cũng được thêm vào trước nút nhập.
+- Đảo ngược hành vi Phát: Thêm tùy chọn mới trong Cài đặt để đảo ngược chức năng của phím Enter và Ctrl+Enter trong danh sách kết quả:
+  + Mặc định (Bỏ chọn): Enter phát Video, Ctrl+Enter phát Âm thanh.
+  + Khi chọn: Enter phát Âm thanh, Ctrl+Enter phát Video.
+Cải tiến Trình phát:
+- Phím tắt mới: Thêm Shift+Space làm phím tắt phụ để Phát/Tạm dừng.
+- Điều hướng Lịch sử: Các nút Bài trước và Bài tiếp theo giờ đây hoạt động đúng khi phát nội dung từ Lịch sử xem.
+- Thông báo giới hạn: Trình phát sẽ thông báo nếu không còn bài trước đó hoặc bài tiếp theo trong danh sách.
+- Tương tác nút: Sửa lỗi hành vi của phím Enter khi kích hoạt các nút điều khiển trên trình phát.
+- Sửa lỗi Yêu thích: Khắc phục lỗi không thể thêm bài đang phát vào danh sách Yêu thích.
+Hệ thống & Điều hướng:
+- Sửa lỗi Tab: Phím Tab và Shift+Tab hiện đã hoạt động bình thường trên màn hình chính.
+- Tải chậm (Lazy Loading - Thử nghiệm): Áp dụng cơ chế Lazy Loading trên toàn ứng dụng giúp cải thiện tốc độ khởi động phần mềm.
+Phiên bản 0.2.0
+Tính năng mới:
+- Tùy chọn chất lượng MP3: Bổ sung các mức chất lượng cao hơn cho chuyển đổi MP3: 256 kbps và 320 kbps.
+- Xem Nhật ký thay đổi: Người dùng có thể xem trực tiếp Nhật ký thay đổi (Changelog) ngay trong thẻ Trợ giúp.
+Cải tiến:
+- Hiển thị thời lượng: Cải thiện cách hiển thị thời gian của video. Thay vì chỉ hiện tổng số giây (ví dụ: "213 giây"), hệ thống sẽ tự động quy đổi sang định dạng dễ hiểu hơn (ví dụ: "3 phút và 33 giây" hoặc "1 giờ và 1 phút và 1 giây").
+- Cơ chế tải Danh sách phát (Playlist): Quá trình tải xuống ổn định hơn. Nếu một video trong danh sách gặp lỗi, ứng dụng sẽ bỏ qua video đó và tiếp tục tải các video còn lại. Một thông báo sẽ hiện ra sau khi hoàn tất để báo cáo số lượng mục tải thành công và số mục bị lỗi.
+Thay đổi:
+- Phím tắt: Đổi phím tắt mở Cài đặt từ Alt+S sang Ctrl+Shift+S để tránh xung đột phím.
+Sửa lỗi:
+- Khắc phục các lỗi xung đột phím tắt trong Trình phát đa phương tiện.
+Phiên bản 0.1
+Trạng thái: Phát hành lần đầu
+Chào mừng bạn đến với phiên bản đầu tiên của A11YTube, ứng dụng được thiết kế tối ưu hóa khả năng tiếp cận, giúp trải nghiệm duyệt, phát và tải nội dung từ YouTube trở nên dễ dàng chỉ với bàn phím.
+Các tính năng mới:
+- Giao diện người dùng:
+  + Giao diện dạng thẻ (Trang chủ, Công cụ, Trợ giúp) chuyển đổi bằng Control+Tab.
+  + Hỗ trợ đa ngôn ngữ: Tùy chọn Tiếng Anh và Tiếng Việt.
+- Tìm kiếm & Điều hướng:
+  + Tìm kiếm video và danh sách phát YouTube (Ctrl+F) với các bộ lọc.
+  + Tính năng "Tải thêm": Tự động tải thêm kết quả khi di chuyển xuống cuối danh sách.
+- Trình phát đa phương tiện:
+  + Trình phát tiếp cận với phím tắt cho Phát/Tạm dừng (Space), Tua và Âm lượng.
+  + Điều chỉnh tốc độ phát (Chậm/Bình thường/Nhanh).
+  + Tùy chọn phát: Hỗ trợ "Tiếp tục xem" (ghi nhớ vị trí), "Lặp lại bài" và "Tự động phát bài tiếp theo".
+  + Hỗ trợ đọc mô tả video (Ctrl+Shift+D).
+- Quản lý Tải xuống:
+  + Tải xuống trực tiếp (Ctrl+D) và tải qua Menu ngữ cảnh.
+  + Hỗ trợ định dạng: Video (MP4) và Âm thanh (M4A, MP3).
+  + Tùy chọn chất lượng chuyển đổi MP3: 96 kbps, 128 kbps, hoặc 192 kbps.
+  + Cho phép thay đổi thư mục lưu trữ tập tin tải về.
+- Thư viện & Công cụ:
+  + Hệ thống Yêu thích (Ctrl+Shift+F) và Lịch sử xem (Ctrl+H).
+  + Tự động phát hiện liên kết từ bộ nhớ tạm khi khởi động.
+  + Tự động kiểm tra cập nhật khi khởi động.
+- Phím tắt toàn cục:
+  + Hệ thống phím tắt đầy đủ (ví dụ: Ctrl+Y để Phát từ liên kết, Ctrl+P để Mở thư mục tải xuống).

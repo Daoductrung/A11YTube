@@ -1,0 +1,113 @@
+Hướng dẫn sử dụng A11YTube
+Phiên bản: {version}
+Tác giả: {author}
+
+[TIẾNG VIỆT] HƯỚNG DẪN SỬ DỤNG
+
+1. GIỚI THIỆU
+Chào mừng bạn đến với A11YTube!
+A11YTube là ứng dụng được thiết kế tối ưu hóa khả năng tiếp cận, giúp người khiếm thị dễ dàng duyệt, phát và tải nội dung từ YouTube. Phần mềm hỗ trợ điều hướng hoàn toàn bằng bàn phím, tương thích tốt với trình đọc màn hình và mang lại trải nghiệm âm thanh liền mạch.
+
+Các tính năng nổi bật:
+- Giao diện tiếp cận: Hỗ trợ phím tắt toàn diện và tối ưu thông báo cho NVDA.
+- Trình phát thông minh: Bao gồm tính năng "Bỏ qua khoảng lặng" (tự động tua qua đoạn im lặng), "Chuyển bài liền mạch" (không bị ngắt quãng giữa các bài) và "Chế độ Rạp chiếu phim" (ẩn các nút không cần thiết).
+- Quản lý tải xuống: Tải Video, Âm thanh, toàn bộ Kênh hoặc Danh sách phát với khả năng tự động bỏ qua lỗi.
+- Hệ thống Bộ sưu tập: Cho phép tạo danh sách phát cá nhân (cục bộ), nhập hoặc nhân bản danh sách từ YouTube.
+- Công cụ nâng cao: Hỗ trợ nhập Cookies để xem nội dung giới hạn độ tuổi và hỗ trợ video đa ngôn ngữ.
+
+2. BẮT ĐẦU
+Giao diện ứng dụng được chia thành 3 thẻ chính. Bạn có thể chuyển đổi giữa các thẻ bằng tổ hợp phím Control+Tab:
+- Trang chủ: Nơi thực hiện Tìm kiếm, Phát nhạc, Tải xuống, xem Yêu thích, Bộ sưu tập và Lịch sử.
+- Công cụ: Truy cập Cài đặt và Tự động cập nhật.
+- Trợ giúp: Xem Hướng dẫn sử dụng, Nhật ký thay đổi và Thông tin phần mềm.
+
+3. TÌM KIẾM NỘI DUNG
+Để tìm video hoặc danh sách phát:
+1. Nhấn Ctrl+S (hoặc chọn "Tìm kiếm YouTube" tại thẻ Trang chủ).
+2. Nhập từ khóa vào ô tìm kiếm.
+3. (Tùy chọn) Tại mục Bộ lọc, chọn "Danh sách phát" nếu chỉ muốn tìm danh sách phát, hoặc "Không bộ lọc" để tìm tất cả.
+4. Nhấn Enter để tìm.
+5. Sử dụng mũi tên Lên/Xuống để duyệt danh sách kết quả.
+
+Phím tắt điều hướng danh sách:
+Khi đang chọn một mục trong kết quả tìm kiếm, danh sách phát hoặc lịch sử:
+- Ctrl + L: Thêm vào Bộ sưu tập.
+- Ctrl + F: Yêu thích (Thêm hoặc Xóa khỏi Yêu thích).
+- Phím Ứng dụng (hoặc Tab đến nút "Menu ngữ cảnh"): Mở Menu ngữ cảnh đầy đủ.
+
+Menu ngữ cảnh:
+- Phát Video / Phát Âm thanh.
+- Tải xuống / Tải xuống trực tiếp.
+- Đi tới Kênh / Tải xuống Kênh.
+- Sao chép liên kết / Mở trong trình duyệt web.
+
+4. TRÌNH PHÁT ĐA PHƯƠNG TIỆN
+Trình phát sẽ tự động mở khi bạn chọn nội dung.
+
+Phím tắt điều khiển chính:
+- Space (Khoảng trắng) hoặc Shift+Space: Phát / Tạm dừng.
+- Mũi tên Trái / Phải: Tua lùi / Tua tới.
+- Dấu - (Trừ) / Dấu = (Bằng): Giảm / Tăng bước nhảy thời gian (số giây sẽ tua khi bấm mũi tên).
+- Mũi tên Lên / Xuống: Tăng / Giảm âm lượng.
+- Escape: Đóng trình phát.
+
+Điều hướng & Bài hát:
+- Shift + N: Bài tiếp theo.
+- Shift + B: Bài trước đó.
+- Home: Quay về đầu video.
+- Số 1 đến 9: Tua đến 10% - 90% thời lượng video.
+
+Chế độ & Thông tin:
+- Ctrl + Shift + E: Bật/Tắt Toàn màn hình (Chế độ Rạp chiếu phim).
+- R: Bật/Tắt Lặp lại.
+- N: Bật/Tắt Tự động chuyển bài (Video đề xuất).
+- S / D / F: Chỉnh tốc độ (Nhanh / Bình thường / Chậm).
+- Ctrl + Shift + T: Đọc tổng thời lượng video.
+- Ctrl + T: Đọc thời gian đã phát.
+- Ctrl + Shift + D: Đọc mô tả video.
+
+Thao tác nhanh trong Trình phát:
+- C: Thêm vào Bộ sưu tập.
+- L: Yêu thích (Thêm hoặc Xóa video hiện tại).
+- Ctrl + D: Tải xuống video đang xem.
+
+5. BỘ SƯU TẬP & DANH SÁCH PHÁT
+A11YTube cho phép bạn tạo và quản lý các Bộ sưu tập cá nhân (Danh sách phát cục bộ).
+
+Quản lý Bộ sưu tập:
+- Nhấn Ctrl+L (từ màn hình chính) để mở Trình quản lý Bộ sưu tập.
+- Tại đây bạn có thể Tạo, Xóa, Đổi tên (F2), hoặc Gộp các bộ sưu tập.
+- Bạn có thể "Nhân bản" một danh sách phát online từ YouTube thành bộ sưu tập cá nhân thông qua menu ngữ cảnh khi tìm kiếm.
+
+Phát Bộ sưu tập:
+- Bạn có thể phát theo thứ tự hoặc chọn "Phát ngẫu nhiên" để nghe nhạc thay đổi liên tục.
+
+6. TẢI XUỐNG NỘI DUNG
+- Tải trực tiếp (Ctrl+D): Dán liên kết YouTube (Video hoặc Playlist) để tải ngay lập tức.
+- Menu ngữ cảnh: Chọn video trong kết quả tìm kiếm, mở Menu ngữ cảnh và chọn Tải xuống.
+- Định dạng hỗ trợ: Video (MP4), Âm thanh (M4A, MP3).
+
+7. CÀI ĐẶT & XÁC THỰC
+Nhấn Ctrl+Shift+S để mở Cài đặt. Các cấu hình quan trọng:
+- Xác thực tài khoản: Nhập tệp `cookies.txt` để xem các nội dung giới hạn độ tuổi.
+- Thông báo: Tùy chọn "Đọc thông báo khi cửa sổ không hoạt động".
+- Định dạng: Cài đặt thư mục tải xuống và chất lượng MP3 (lên đến 320kbps).
+- Trình phát: Bật tính năng "Bỏ qua khoảng lặng" (Thử nghiệm).
+
+8. DANH SÁCH PHÍM TẮT TOÀN CỤC
+Sử dụng các phím này tại màn hình chính (Thẻ Trang chủ):
+- Ctrl + S: Tìm kiếm YouTube.
+- Ctrl + D: Tải xuống trực tiếp.
+- Ctrl + P: Phát từ liên kết (Hỗ trợ link Video và Playlist).
+- Ctrl + F: Mở thư viện Yêu thích.
+- Ctrl + H: Mở Lịch sử xem.
+- Ctrl + L: Mở Trình quản lý Bộ sưu tập.
+- Ctrl + Shift + S: Mở Cài đặt.
+- Ctrl + Shift + C: Xem Nhật ký thay đổi.
+- Ctrl + Shift + U: Kiểm tra cập nhật.
+- Ctrl + O: Mở thư mục chứa file tải xuống.
+- Ctrl + W: Thoát ứng dụng.
+- F1: Mở Hướng dẫn sử dụng.
+
+LỜI KẾT
+Cảm ơn bạn đã sử dụng A11YTube. Hy vọng phần mềm sẽ giúp trải nghiệm YouTube của bạn trở nên dễ dàng và thuận tiện hơn. Mọi ý kiến đóng góp hoặc báo lỗi, vui lòng liên hệ với tác giả hoặc xem thêm trong thẻ Trợ giúp.

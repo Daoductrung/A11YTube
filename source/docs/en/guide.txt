@@ -1,0 +1,113 @@
+A11YTube User Guide
+Version: {version}
+Author: {author}
+
+[ENGLISH] USER GUIDE
+
+1. INTRODUCTION
+Welcome to A11YTube!
+A11YTube is an accessible application designed to provide a streamlined, keyboard-friendly experience for browsing, playing, and downloading content from YouTube. This software is optimized for screen readers and keyboard navigation.
+
+Key Features:
+- Accessible Interface: Full keyboard navigation support and NVDA optimizations.
+- Smart Playback: "Skip Silence" (removes gaps in audio), "Seamless Transitions" (gapless playback), and "Cinema Mode" (distraction-free).
+- Download Manager: Download Videos, Audio, Channels, and Playlists with auto-resume capability.
+- Collection System: Manage your own local playlists and import/clone from YouTube.
+- Advanced Tools: Cookie import for age-restricted content and Multi-language audio support.
+
+2. GETTING STARTED
+The application interface is organized into three main tabs. You can switch between these tabs using Control+Tab:
+- Home: The main workspace for Search, Playback, Downloads, Favorites, Collections, and History.
+- Tools: Access Settings and Automatic Updates.
+- Help: Access this User Guide, Changelogs, and About information.
+
+3. SEARCHING FOR CONTENT
+To search for a video or playlist:
+1. Press Ctrl+S (or navigate to the Home tab and select "Search YouTube").
+2. Type your keywords into the search box.
+3. (Optional) Use the Filter dropdown to choose "Playlist" (for playlists only) or "No Filter" (mixed results).
+4. Press Enter to search.
+5. Use Up/Down arrow keys to navigate the results.
+
+List Navigation Shortcuts:
+When navigating search results, playlists, or history:
+- Ctrl + L: Add to Collection.
+- Ctrl + F: Toggle Favorite (Add/Remove).
+- Applications Key (or Tab to "Menu"): Open the full Context Menu.
+
+Context Menu Actions:
+- Play Video / Play Audio.
+- Download / Direct Download.
+- Go to Channel / Download Channel.
+- Copy Link / Open in Web Browser.
+
+4. MEDIA PLAYER CONTROLS
+The Media Player opens automatically when you play content.
+
+Essential Player Shortcuts:
+- Space or Shift+Space: Play / Pause.
+- Left / Right Arrows: Rewind / Forward.
+- - (Minus) / = (Equal): Decrease / Increase the seek step (seconds jumped by arrows).
+- Up / Down Arrows: Increase / Decrease Volume.
+- Escape: Close the player.
+
+Navigation & Videos:
+- Shift + N: Next Video.
+- Shift + B: Previous Video.
+- Home: Jump to the beginning of the video.
+- 1 through 9: Jump to 10% through 90% of the video duration.
+
+Modes & Information:
+- Ctrl + Shift + E: Toggle Full Screen / Cinema Mode.
+- R: Toggle Repeat.
+- N: Toggle Auto Next (Recommended Videos).
+- S / D / F: Change Speed (Fast / Normal / Slow).
+- Ctrl + Shift + T: Read Total Duration.
+- Ctrl + T: Read Elapsed Time.
+- Ctrl + Shift + D: Read Video Description.
+
+Quick Actions in Player:
+- C: Add to Collection.
+- L: Toggle Favorite.
+- Ctrl + D: Download current video.
+
+5. COLLECTIONS & PLAYLISTS
+A11YTube allows you to manage your own Collections (Local Playlists).
+
+Managing Collections:
+- Press Ctrl+L (from Main Screen) to open the Collection Manager.
+- Here you can Create, Delete, Rename (F2), or Merge collections.
+- You can also "Clone" an online YouTube playlist into your local collection via the search results context menu.
+
+Playing Collections:
+- You can play a collection normally or use "Shuffle Play" for a randomized experience.
+
+6. DOWNLOADING CONTENT
+- Direct Download (Ctrl+D): Paste a YouTube link (Video or Playlist) to download immediately.
+- Context Menu: Highlight any video in search results, press Context Menu, and select Download.
+- Supported Formats: Video (MP4), Audio (M4A, MP3).
+
+7. SETTINGS & AUTHENTICATION
+Press Ctrl+Shift+S to open Settings. Key configurations include:
+- Account Verification: Import a `cookies.txt` file to watch age-restricted content.
+- Notifications: Toggle "Speak notifications when window is inactive".
+- Formats: Set default download formats and MP3 quality (up to 320kbps).
+- Player: Toggle "Skip Silence" (Experimental) for continuous listening.
+
+8. GLOBAL KEYBOARD SHORTCUTS
+Use these keys from the main window (Home Tab):
+- Ctrl + S: Search YouTube.
+- Ctrl + D: Direct Download.
+- Ctrl + P: Play from a Link (Video or Playlist URL).
+- Ctrl + F: Open Favorites Library.
+- Ctrl + H: Open Watch History.
+- Ctrl + L: Open Collection Manager.
+- Ctrl + Shift + S: Open Settings.
+- Ctrl + Shift + C: View Changelog.
+- Ctrl + Shift + U: Check for Updates.
+- Ctrl + O: Open Downloads Folder.
+- Ctrl + W: Exit Application.
+- F1: Open User Guide.
+
+CONCLUSION
+Thank you for using A11YTube. We hope this software makes your YouTube experience smoother and more accessible. For support, feedback, or to report bugs, please contact the author or check the Help tab for more details.

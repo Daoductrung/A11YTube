@@ -1,0 +1,241 @@
+Version 0.3.0
+New Features:
+- Recommended Videos List: Added a "Recommended Videos" button in the Media Player. You can now manually browse and select from a list of 19 related videos instead of relying solely on the Auto-Next algorithm. (Note: This feature is optimized for music content).
+Improvements & Accessibility:
+- Seek Announcements: The software now verbally announces the current timestamp whenever you seek through a video.
+- Smart Settings: The "MP3 Conversion Quality" dropdown in Settings is now hidden unless "Audio (mp3)" is selected, reducing interface clutter and confusion.
+- Playback Status: Improved the clarity of status announcements for the Play/Pause button.
+- Seeking Logic: Adjusted the seeking behavior. The player no longer goes silent if you seek past the end of a video; it will instead loop back to the beginning.
+Bug Fixes:
+- Tab Positioning: Fixed an issue where screen readers would report incorrect position information (e.g., "1 of X") for tabs on the main screen.
+- Tab Navigation: `Ctrl+Tab` and `Ctrl+Shift+Tab` now correctly navigate through the main navigation tabs.
+- Auto-Next Logic: Fixed a bug where the player would still skip to the next track even if "Auto Next" was disabled, specifically when the "Skip Silence" feature was active.
+Version 0.2.9.4
+New Features:
+- Voice Search: Added a dedicated "Voice Search" button in the search interface. To use it, Tab to the button, Press and Hold Space to speak your query, then release the key to search.
+- New Player Shortcut: Added Ctrl + K to copy the link of the currently playing video.
+Bug Fixes:
+- Skip Silence: Fixed a bug where a video would play twice due to a conflict with the skip silence logic.
+- Collection History: Fixed a logic gap where playing videos from a Collection would not correctly save to Watch History if the 'Continue' loop was enabled.
+Improvements:
+- Performance: Fixed potential freezing issues by optimizing background tasks.
+- Localization: Converted several hardcoded text strings into translatable resources, improving language support.
+Version 0.2.9.3
+Critical Bug Fixes:
+- Download Logic: Fixed a critical issue where the "Download" button would incorrectly download the previous search result instead of the currently playing Recommended video. The downloader now correctly targets the active media.
+New Features:
+- Play Playlist via Link: You can now play an entire playlist directly by pasting its URL (similar to how single video links are handled).
+Major Changes: Keyboard Shortcuts Overhaul
+The keyboard shortcut scheme has been significantly reorganized to be more logical and intuitive. Please check the new User Guide for the full list.
+New assignments include:
+- Ctrl + F: Toggle Favorite (Add/Remove the selected video to/from Favorites).
+- Ctrl + L: Add to Collection (Open the collection manager for the selected video).
+Documentation:
+- User Guide Update: The A11YTube User Guide has been completely rewritten to reflect the new shortcut scheme and features. You can access it via the Help tab or by pressing F1.
+Version 0.2.9.2
+New Features:
+- Seamless Track Transition: The media player now supports seamless transitions. The current track continues playing while the next track loads in the background, ensuring a smooth, uninterrupted listening experience without gaps or sudden silence.
+Improvements & Stability:
+- Navigation Spam Protection: Implemented logic to prevent rapid-fire clicking of "Next" or "Previous" buttons.
+  + If a track is already loading, repeated commands are ignored.
+  + The system verbally notifies "Please wait, track is loading..." to prevent application freezing.
+- Stability Fixes:
+  + Fixed potential race conditions during auto-next sequences.
+  + Fixed various minor bugs.
+Maintenance:
+- Code Cleanup: Removed redundant code and optimized source code structure.
+Version 0.2.9.1
+Critical Bug Fixes:
+- Skip Silence: Fixed a critical issue where the "Skip Silence" feature only worked for the first track in a session. The system now correctly calculates and applies the start time (skipping silence) for all subsequent tracks, including Auto-Next and Recommended videos.
+Media Player Improvements:
+- Time Slider Logic: The time slider now automatically resets to 0 when the video is loading or fully stopped. This prevents "fake" time displays and potential player errors.
+- Volume Control: Improved volume logic allowing users to adjust the volume (0-100) even when playback is stopped or loading. The setting is saved and applied immediately as soon as the video starts playing.
+Accessibility Updates:
+- Button Announcements: Refined screen reader feedback for control buttons (Play, Next, Prev, etc.). Pressing Space or Enter now executes the command immediately without the redundant "pressed" announcement, resulting in a cleaner audio experience.
+Version 0.2.9
+Feature Completion:
+- Startup Optimization: The experimental optimizations for application startup speed have been finalized and are now marked as completed.
+New Features:
+- Recommended Videos (Experimental): Changed the behavior of the "Auto Next" feature. When playing a video from Search Results or Watch History, the application will now queue a related/recommended video as the next track, instead of simply playing the next item in the list.
+Improvements:
+- Auto-Player: Improved the stability and logic of the automatic playback system.
+Version 0.2.8
+Improvements:
+- Skip Silence: Improved the algorithm for the Skip Silence feature to detect and skip silent parts more accurately.
+Bug Fixes:
+- Playback Failure: Fixed a critical issue that prevented videos from playing.
+- Play/Pause Control: Fixed an issue where the Play/Pause toggle (Space/Shift+Space) was not functioning correctly.
+- Download Directory: Fixed a bug where changing the default download folder path in Settings was not working properly.
+Version 0.2.7
+Feature Completion:
+- Multi-language Audio: This feature is now fully stable and marked as completed.
+- Lazy Loading: The lazy loading mechanism has been finalized and marked as completed.
+New Features:
+- Skip Silence (Experimental): Added a new feature for playlist playback. When enabled, the software automatically skips silent parts within videos or music tracks during auto-transitions, creating a seamless continuous listening experience.
+- NVDA Notifications: Added "Speak notifications when window is inactive" in Settings (Default: Off). Prevents A11YTube from announcing notifications when you are focused on other windows, unless enabled.
+Improvements & Performance:
+- Track Transition Speed: Improved the speed of changing tracks when listening in both sequential and shuffle modes.
+- Collection Info: Collections now display the total number of videos they contain.
+- Playlist Error Handling: If a video fails to load in a playlist, the app now automatically skips to the next track after 1 second instead of showing a blocking dialog.
+- Smart Shuffle: Enhanced shuffle algorithm. When the playlist loops and reshuffles, it ensures the first song of the new sequence is different from the last song played.
+Bug Fixes:
+- Audio Track Switching: The player now correctly remembers and resumes from the current position when switching audio languages, even if "Continue watching" is disabled.
+Version 0.2.6
+New Features: System & Data Management
+- Backup & Restore: Added full configuration backup and restore functionality. You can now easily transfer your settings, history, and collections between devices.
+- Collection Import/Export: Share your collections with others or import external collections easily.
+- Cookie Management: Added the ability to delete an imported `cookies.txt` file. The system now also notifies you if the cookie file has expired.
+- Open Config Folder: Added a button in Settings to quickly open the configuration folder.
+New Features: Collections & Playlists
+- Collection Operations:
+  + Rename Collection: Press F2 or use the context menu to rename a collection.
+  + Clone Playlist: Clone an online YouTube playlist directly into a new local Collection.
+  + Merge Playlist: Merge an online YouTube playlist into an existing local Collection.
+  + Merge Collections: Merge a source collection into a destination collection (the source collection is preserved).
+- Shuffle Play for Playlists: "Shuffle Play" is now available for playlists in search results via the Context Menu.
+- Quick Actions in Search Results:
+  + Ctrl+Shift+L: Add/Remove selected item from Favorites.
+  + Ctrl+Shift+C: Add selected item to a Collection.
+New Player Shortcuts & Controls:
+A comprehensive set of shortcuts has been added/standardized for the Media Player:
+1. Playback
+- Shift + Space: Play / Pause.
+- Home: Jump to start.
+- 1 - 9: Jump to 10% - 90% of duration.
+- - / = : Decrease / Increase Seek Step (Adjusts the number of seconds jumped when using Left/Right Arrows).
+- Left / Right Arrows: Rewind / Forward (based on the current Seek Step; active only when focusing controls or in Fullscreen).
+2. Navigation
+- Shift + N: Next Track.
+- Shift + B: Previous Track.
+3. Utilities & Features
+- L: Toggle Favorite.
+- C: Open "Add to Collection" menu.
+- Ctrl + Shift + E: Toggle Fullscreen.
+- Ctrl + Shift + L: Read Video Duration.
+- Ctrl + Shift + T: Read Elapsed Time.
+4. Modes & Speed
+- R: Toggle Repeat.
+- N: Toggle Auto Next.
+- S: Fast Speed (1.4x).
+- D: Normal Speed (1.0x).
+- F: Slow Speed (0.6x).
+- Up / Down Arrows: Volume Control (focused controls or Fullscreen only).
+5. System
+- Ctrl + D: Direct Download current video.
+- Ctrl + Shift + D: Read Description.
+- Ctrl + L: Copy Link.
+- Ctrl + B: Open in Browser.
+- Ctrl + Shift + S: Open Settings.
+- ESC: Close Player.
+Version 0.2.5
+New Feature: Collections System
+- Collection Manager: Create, delete, and manage your custom collections. Access this via the Home tab or use the shortcut Ctrl+Shift+L.
+- Categorization: While playing a video, you can now add it to specific collections (e.g., EDM, Pop, Audiobooks) similar to adding to Favorites.
+- Shuffle Play: Added a "Shuffle Play" feature for collections. The player will generate a random playlist from your collection and loop it continuously (reshuffling upon completion). Perfect for background listening while working or sleeping.
+New Features & UI Improvements:
+- Accessible Context Menu Button: Added a visible, tabbable button next to interactive items. You can now press Tab to access the Context Menu instead of relying solely on Right-Click or Shift+F10.
+- Channel Actions: Added "Go to Channel" and "Download Channel" options to the video Context Menu.
+Performance & Optimization:
+- Database Indexing: Added indexes to Favorites, History, and Collection tables. Checking if a video exists in these lists is now instant (O(1)), ensuring high performance even with thousands of items.
+- Search Browser Optimization: Optimized the interface to use fast database checks for favorites, eliminating lag when moving the cursor through search results.
+- Settings & Storage: Optimized settings saving (Batch Write) and removed redundant database delete operations.
+Logic Changes:
+- Watch History: The History feature now relies on the "Continue watching" setting. History will only be logged if "Continue watching" is enabled in Settings.
+Bug Fixes:
+- MediaGui Initialization: Fixed a bug preventing "Add to Favorites" and "Add to Collection" from working when playing videos directly from a Collection.
+- Downloader Stability: Fixed a potential "Division by Zero" crash in the downloader.
+- Search Filter: Removed redundant code in the search filter logic.
+Version 0.2.4
+New Features:
+- Multi-language Audio (Experimental): Added support for switching audio tracks. Users can now listen to different languages if the video supports multiple audio streams (e.g., dubbed content).
+- Library Management Updates:
+  + History: Added a specific "Remove from History" button and support for the Delete key to quickly remove items.
+  + Favorites: Added a "Clear Favorites" button to remove all items at once.
+Improvements:
+- Contextual UI: The "Auto Next" checkbox is now hidden when using the Single Player (where no previous or next tracks exist) to avoid confusion.
+- Performance: Refactored the track changing logic to run on a background thread ("Non-blocking Track Change"). This prevents the application interface from freezing while loading the next track.
+Bug Fixes:
+- Full Screen Shortcuts: Fixed an issue where keyboard shortcuts would stop working when entering Full Screen mode.
+- Stability: Fixed a race condition in the "Add to Favorites" checkbox logic that could cause instability in the browser/player interface.
+Version 0.2.3
+New Features:
+- Cinema Mode: 
+  + When entering Full Screen, all controls and sliders are hidden to provide a distraction-free experience.
+  + A single "Exit Full Screen" button remains, which automatically captures screen reader focus (press Space/Enter to exit).
+  + Playback shortcuts (Play/Pause, Seek) remain active.
+- Startup Enhancements:
+  + Added a "Starting..." notification to inform users that the app is loading (helpful for cold starts that take 20+ seconds).
+  + Added a Splash Screen during launch.
+- Single Instance Enforcement: 
+  + The app now checks if A11YTube is already running. If you try to open it again, it will bring the existing window to the front instead of opening a duplicate instance.
+- New Shortcuts (Main Screen):
+  + Ctrl+U: Check for Updates.
+  + Ctrl+Shift+C: Open Changelog.
+Improvements:
+- Media Player Optimization: Rewrote the player logic to initialize a fresh, independent VLC instance for every video. This improves memory management and prevents state conflicts.
+- Thread Management & Exit Stability: Converted all background threads (downloading, fetching descriptions, link checking) to daemon threads. This ensures the app closes immediately and cleanly upon exit (Alt+F4), eliminating "zombie" processes.
+- System Integration: Changed "Open Downloads Folder" to use the native `os.startfile` command, making it more reliable on customized Windows versions compared to the old `explorer.exe` method.
+- Cookie Logic: Improved authentication logic. Importing `cookies.txt` now correctly allows viewing of both age-restricted/Verify it's not a bot content AND regular public videos without issues.
+Bug Fixes:
+- Database Stability: Fixed thread conflicts when saving History or Favorites, preventing crashes during concurrent data writing.
+- Update Freeze: Fixed an issue causing the application to hang during the update process.
+- Playback Errors: Fixed `h264` and `prefetch stream` errors in the media player.
+- Window Focus: Fixed an issue where the application window would disappear or lose focus when using Alt-Tab.
+Version 0.2.2
+Improvements & Features:
+- Save Fullscreen State: The application now remembers your Fullscreen preference (saved in settings.ini) and will apply it automatically in future sessions.
+- Startup Optimization (Experimental): Implemented further experimental adjustments to improve the application's startup speed.
+Bug Fixes:
+- Favorites List Refresh: Fixed an issue where the Favorites list would not immediately refresh after removing a video in certain scenarios.
+Version 0.2.1
+New Features & Settings:
+- Cookie Import (Bot Verification Bypass): Added a solution for the "Sign in to confirm you’re not a bot" error. You can now import a `cookies.txt` file in Settings to authenticate requests. A "How to get cookies.txt" guide button has been added before to the import option.
+- Swap Play Actions: Added a new configuration in Settings to swap the behavior of Enter and Ctrl+Enter in search results:
+  + Default (Unchecked): Enter plays Video, Ctrl+Enter plays Audio.
+  + Checked: Enter plays Audio, Ctrl+Enter plays Video.
+Media Player Improvements:
+- New Shortcut: Added Shift+Space as an alternative shortcut to toggle Play/Pause.
+- History Navigation: Previous and Next buttons now function correctly when playing items from Watch History.
+- Boundary Notifications: The player will now announce when there are no previous or next tracks available to play.
+- Control Interaction: Fixed the behavior of the Enter key when activating player control buttons.
+- Favorites Fix: Fixed an issue where adding the currently playing track to Favorites failed.
+System & Navigation:
+- Navigation Fix: Tab and Shift+Tab now function correctly on the main screen.
+- Lazy Loading (Experimental): Implemented a new Lazy Loading mechanism across the application to improve startup speed.
+Version 0.2.0
+New Features:
+- MP3 Quality Options: Added higher bitrate options for MP3 conversion: 256 kbps and 320 kbps.
+- Changelog Viewer: Users can now view the Changelog directly within the Help tab.
+Improvements:
+- Duration Display: Improved how video duration is formatted. Instead of showing total seconds (e.g., "213 seconds"), the app now converts it to a human-readable format (e.g., "3 minutes and 33 seconds" or "1 hour and 1 minute and 1 second").
+- Playlist Downloading Logic: The download process is now more resilient. If a specific video in a playlist fails to download, the application will skip it and continue downloading the remaining items. A notification will appear upon completion detailing the number of successful and failed items.
+Changes:
+- Keyboard Shortcuts: Changed the shortcut for opening Settings from Alt+S to Ctrl+Shift+S to avoid conflicts.
+Bug Fixes:
+- Fixed keyboard shortcut conflicts within the Media Player.
+Version 0.1
+Release Status: Initial Release
+Welcome to the first version of A11YTube, an accessible application designed to provide a streamlined, keyboard-friendly experience for browsing, playing, and downloading content from YouTube.
+New Features:
+- User Interface:
+  + Tabbed interface (Home, Tools, Help) accessible via Control+Tab.
+  + Multilingual support: Available in English and Vietnamese.
+- Search & Navigation:
+  + Search for YouTube videos and playlists (Ctrl+F) with filter options.
+  + "Load More" functionality: Automatically load more results when reaching the end of the list.
+- Media Player:
+  + Accessible player with shortcuts for Play/Pause (Space), Seek, and Volume.
+  + Speed controls (Slow/Normal/Fast).
+  + Playback preferences: Options to toggle "Continue watching", "Repeat track", and "Auto play next track".
+  + Support for video descriptions (Ctrl+Shift+D).
+- Download Manager:
+  + Direct Download (Ctrl+D) and Context Menu downloads.
+  + Format support: Video (MP4) and Audio (M4A, MP3).
+  + MP3 Conversion Quality options: Selectable bitrates (96 kbps, 128 kbps, 192 kbps).
+  + Custom download folder selection via Settings.
+- Library & Tools:
+  + Favorites system (Ctrl+Shift+F) and Watch History (Ctrl+H).
+  + Auto-detect links from clipboard on startup.
+  + Auto-check for updates on startup.
+- Global Shortcuts:
+  + Comprehensive hotkey support (e.g., Ctrl+Y to Play from Link, Ctrl+P to Open Downloads Folder).
