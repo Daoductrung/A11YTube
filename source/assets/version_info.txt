@@ -29,11 +29,11 @@ VSVersionInfo(
       [
       StringTable(
         u'040904B0',
-        [StringStruct(u'CompanyName', u'Trung_Nguyen'),
+        [StringStruct(u'CompanyName', u'Dao Duc Trung'),
         StringStruct(u'FileDescription', u'Accessibility Youtube Player'),
         StringStruct(u'FileVersion', u'0.3.1.0'),
         StringStruct(u'InternalName', u'A11YTube'),
-        StringStruct(u'LegalCopyright', u'Trung_Nguyen'),
+        StringStruct(u'LegalCopyright', u'Dao Duc Trung'),
         StringStruct(u'OriginalFilename', u'A11YTube.exe'),
         StringStruct(u'ProductName', u'A11YTube'),
         StringStruct(u'ProductVersion', u'0.3.1.0')])
