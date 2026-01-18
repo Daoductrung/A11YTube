@@ -1,0 +1,8 @@
+bs4
+requests
+pyperclip
+python-vlc
+yt-dlp
+wxpython
+SpeechRecognition
+PyAudio
