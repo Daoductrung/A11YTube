@@ -1,3 +1,10 @@
+Phiên bản 0.3.1
+Cài đặt mới:
+- Kiểm soát thông báo Trình phát: Thêm hộp kiểm "Đọc thông báo trạng thái trình phát" trong Cài đặt -> Cài đặt Trình phát.
+  + Khi bật (Mặc định): Trình đọc màn hình (NVDA) sẽ đọc các trạng thái như Đã phát/Đã dừng, thời gian khi tua và thông báo Đang tải.
+  + Khi tắt: Trình phát sẽ không gửi các thông báo trạng thái này, giúp trải nghiệm nghe yên tĩnh hơn.
+Bảo trì:
+- Đồng bộ ngôn ngữ: Cập nhật và đồng bộ hóa các chuỗi văn bản trong phần mềm để hiển thị thống nhất hơn.
 Phiên bản 0.3.0
 Tính năng mới:
 - Danh sách Video đề xuất: Thêm nút "Video đề xuất" trong Trình phát. Thay vì để hệ thống tự chọn bài tiếp theo, bạn có thể mở danh sách này để chủ động chọn 1 trong 19 video liên quan. (Lưu ý: Tính năng hoạt động tốt nhất với nội dung âm nhạc).

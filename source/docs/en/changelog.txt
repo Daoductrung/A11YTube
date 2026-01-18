@@ -1,3 +1,10 @@
+Version 0.3.1
+New Settings:
+- Player Verbosity Control: Added a "Speak player status notifications" checkbox in Settings -> Player Settings.
+  + Enabled (Default): The screen reader (NVDA) will announce player events such as Play/Pause, Seek timestamps, and "Loading" status.
+  + Disabled: The player will remain silent regarding status updates, providing a quieter experience.
+Maintenance:
+- Localization: Updated and synchronized text strings across the application for better consistency.
 Version 0.3.0
 New Features:
 - Recommended Videos List: Added a "Recommended Videos" button in the Media Player. You can now manually browse and select from a list of 19 related videos instead of relying solely on the Auto-Next algorithm. (Note: This feature is optimized for music content).
