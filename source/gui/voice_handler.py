@@ -2,6 +2,7 @@ import speech_recognition as sr
 import threading
 import winsound
 import time
+import os
 
 from nvda_client.client import speak
 from settings_handler import config_get
@@ -14,6 +15,24 @@ class VoiceHandler:
 		self.frames = []
 		self.audio = None
 		self.thread = None
+
+	def _play_sound(self, sound_name):
+		# Look for custom wav file first
+		# sound_name should be "start_rec" or "stop_rec"
+		sound_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "sounds", f"{sound_name}.wav")
+		if os.path.exists(sound_path):
+			try:
+				print(sound_path)
+				winsound.PlaySound(sound_path, winsound.SND_FILENAME)
+				return
+			except Exception as e:
+				print(f"Error playing sound {sound_path}: {e}")
+		
+		# Fallback to beep if file not found or error
+		if sound_name == "start_rec":
+			winsound.Beep(600, 100)
+		elif sound_name == "stop_rec":
+			winsound.Beep(400, 100)
 
 	def start_recording(self):
 		return self.start_recording_direct()
@@ -38,7 +57,7 @@ class VoiceHandler:
 		
 		self.is_recording = True
 		self.frames = []
-		winsound.Beep(600, 100) # Start Beep
+		self._play_sound("start_rec") # Start Sound
 		
 		self.thread = threading.Thread(target=self._record_loop_direct)
 		self.thread.daemon = True
@@ -67,7 +86,7 @@ class VoiceHandler:
 			self.p.terminate()
 		except: pass
 
-		winsound.Beep(400, 100) # Stop Beep
+		self._play_sound("stop_rec") # Stop Sound
 		
 		if not self.frames: return None
 		
