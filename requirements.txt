@@ -6,3 +6,4 @@ yt-dlp
 wxpython
 SpeechRecognition
 PyAudio
+winsdk

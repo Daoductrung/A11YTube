@@ -9,7 +9,11 @@ from settings_handler import config_get
 class VoiceHandler:
 	def __init__(self):
 		self.recognizer = sr.Recognizer()
-		self.microphone = sr.Microphone()
+		try:
+			self.microphone = sr.Microphone()
+		except Exception as e:
+			print(f"Microphone Init Error: {e}")
+			self.microphone = None
 		self.is_recording = False
 		self.frames = []
 		self.audio = None
@@ -23,26 +27,33 @@ class VoiceHandler:
 	
 	def start_recording_direct(self):
 		if self.is_recording: return
-		import pyaudio
-		self.CHUNK = 1024
-		self.FORMAT = pyaudio.paInt16
-		self.CHANNELS = 1
-		self.RATE = 44100
-		
-		self.p = pyaudio.PyAudio()
-		self.stream = self.p.open(format=self.FORMAT,
-						channels=self.CHANNELS,
-						rate=self.RATE,
-						input=True,
-						frames_per_buffer=self.CHUNK)
-		
-		self.is_recording = True
-		self.frames = []
-		winsound.Beep(600, 100) # Start Beep
-		
-		self.thread = threading.Thread(target=self._record_loop_direct)
-		self.thread.daemon = True
-		self.thread.start()
+		try:
+			import pyaudio
+			self.CHUNK = 1024
+			self.FORMAT = pyaudio.paInt16
+			self.CHANNELS = 1
+			self.RATE = 44100
+			
+			self.p = pyaudio.PyAudio()
+			self.stream = self.p.open(format=self.FORMAT,
+							channels=self.CHANNELS,
+							rate=self.RATE,
+							input=True,
+							frames_per_buffer=self.CHUNK)
+			
+			self.is_recording = True
+			self.frames = []
+			winsound.Beep(600, 100) # Start Beep
+			
+			self.thread = threading.Thread(target=self._record_loop_direct)
+			self.thread.daemon = True
+			self.thread.start()
+		except Exception as e:
+			print(f"Start Recording Error: {e}")
+			speak("Microphone error")
+			self.is_recording = False
+			self.p = None
+			self.stream = None
 
 	def _record_loop_direct(self):
 		while self.is_recording:

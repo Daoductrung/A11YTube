@@ -17,6 +17,7 @@ import time
 from database import Continue, History, Favorite
 from .analysis import detect_silence
 from .player import Player, State
+from .smtc_manager import SMTCManager
 import random
 
 
@@ -66,6 +67,7 @@ class MediaGui(wx.Frame):
 		self.favorite = Favorite()
 		self.history_saved = False
 		self.video_data = None
+		self.smtc_manager = None
 
 
 		# Smart Navigation Init
@@ -404,13 +406,9 @@ class MediaGui(wx.Frame):
 		
 		self.Bind(wx.EVT_MENU, lambda event: SettingsDialog(self), id=self.ID_SETTINGS)
 
-		# Media Keys
-		self.prev_id = 100
-		self.play_pause_id = 150
-		self.next_id = 200
-		self.registerHotKey()
-		for hot_id in [self.prev_id, self.play_pause_id, self.next_id]:
-			self.Bind(wx.EVT_HOTKEY, self.onHot, id=hot_id)
+		# Media Keys registration moved to after SMTC init to avoid conflicts
+		pass
+
 
 		self.Bind(wx.EVT_CLOSE, lambda event: self.closeAction())
 		
@@ -494,10 +492,31 @@ class MediaGui(wx.Frame):
 				self.Close()
 			return
 		
-		# Timer for Slider
 		self.timer = wx.Timer(self)
 		self.Bind(wx.EVT_TIMER, self.onTimer, self.timer)
 		self.timer.Start(1000)
+
+		# Initialize SMTC
+		try:
+			self.smtc_manager = SMTCManager(callbacks={
+				# Use Toggle behavior (no force args) to resolve Windows status desync
+				'on_play': lambda: wx.CallAfter(self.playAction),
+				'on_pause': lambda: wx.CallAfter(self.playAction),
+				'on_next': lambda: wx.CallAfter(self.next),
+				'on_previous': lambda: wx.CallAfter(self.previous)
+			})
+		except Exception as e:
+			print(f"SMTC Init Error: {e}")
+			self.smtc_manager = None
+
+		# Media Keys - Only register legacy hotkeys if SMTC is NOT active to avoid conflicts
+		if not self.smtc_manager:
+			self.prev_id = 100
+			self.play_pause_id = 150
+			self.next_id = 200
+			self.registerHotKey()
+			for hot_id in [self.prev_id, self.play_pause_id, self.next_id]:
+				self.Bind(wx.EVT_HOTKEY, self.onHot, id=hot_id)
 
 
 		# Save History logic
@@ -511,6 +530,7 @@ class MediaGui(wx.Frame):
 		t = Thread(target=self.extract_description)
 		t.daemon = True
 		t.start()
+
 
 	def speak_status(self, msg):
 		if config_get("player_notifications"):
@@ -679,20 +699,40 @@ class MediaGui(wx.Frame):
 		dlg.Destroy()
 
 	@has_player
-	def playAction(self):
+	def playAction(self, force_play=False, force_pause=False):
 		state = self.player.media.get_state()
-		if state in (State.NothingSpecial, State.Stopped):
-			self.player.media.play()
-			self.speak_status(_("Played"))
-			self.playButton.SetLabel(_("Pause")) # Immediate feedback
-		elif state == State.Paused:
-			self.player.media.play() # Resume
-			self.speak_status(_("Played"))
+		
+		# Determine intent
+		intent_play = False
+		if force_play:
+			intent_play = True
+		elif force_pause:
+			intent_play = False
+		else:
+			# Toggle logic
+			# Treat Buffering(3) and Opening(1) as Playing(3) for toggle purposes.
+			# If we are Buffering, toggle means PAUSE (Stop buffering/playing).
+			intent_play = (state in (State.NothingSpecial, State.Stopped, State.Paused, State.Ended))
+		
+		# Execute
+		if intent_play:
+			# Only Play if not already Playing (to avoid restarting or glitches)
+			# But if we were Paused, we Play.
+			if state != State.Playing:
+				self.player.media.play()
+				self.speak_status(_("Played"))
+			
 			self.playButton.SetLabel(_("Pause"))
-		elif state == State.Playing:
-			self.player.media.pause()
-			self.speak_status(_("Paused"))
+			if self.smtc_manager: self.smtc_manager.update_status(True)
+		else:
+			# Pause
+			# If Playing, Buffering, or Opening -> Pause
+			if state in (State.Playing, State.Buffering, State.Opening):
+				self.player.media.pause()
+				self.speak_status(_("Paused"))
+			
 			self.playButton.SetLabel(_("Play"))
+			if self.smtc_manager: self.smtc_manager.update_status(False)
 
 	@has_player
 	def forwardAction(self):
@@ -797,6 +837,10 @@ class MediaGui(wx.Frame):
 
 	def closeAction(self):
 		self.shutting_down = True
+		if self.smtc_manager:
+			try:
+				self.smtc_manager.close()
+			except: pass
 		if self.player is not None:
 			cur_pos = self.player.media.get_position()
 			# Save current Audio Track preference
@@ -854,6 +898,7 @@ class MediaGui(wx.Frame):
 
 	def onHook(self, event):
 		key = event.GetKeyCode()
+		
 
 		# Escape always closes
 		if key == wx.WXK_ESCAPE:
@@ -936,7 +981,8 @@ class MediaGui(wx.Frame):
 				if self.results: self.previous()
 				return
 
-		# Letter Hotkeys (Speed, Seek step, Repeat, etc.)
+			# Letter Hotkeys (Speed, Seek step, Repeat, etc.)
+		
 		# Ensure NO modifiers are pressed for these single-key shortcuts
 		if not event.HasAnyModifiers():
 			if key == wx.WXK_HOME:
@@ -963,6 +1009,11 @@ class MediaGui(wx.Frame):
 				speak(f"{_('Seek')} {self.seek} {_('seconds')}")
 				return
 			elif key in (ord("="), wx.WXK_NUMPAD_ADD):
+				self.seek += 1
+				config_set("seek", min(10, self.seek))
+				speak(f"{_('Seek')} {self.seek} {_('seconds')}")
+				return
+			elif key == ord("+"): # Explicit plus char
 				self.seek += 1
 				config_set("seek", min(10, self.seek))
 				speak(f"{_('Seek')} {self.seek} {_('seconds')}")
@@ -1396,7 +1447,16 @@ class MediaGui(wx.Frame):
 			self.safe_call_after(self.player.media.play)
 			self.safe_call_after(self.player.media.audio_set_volume, self.player.volume)
 			
+			self.safe_call_after(self.player.media.audio_set_volume, self.player.volume)
+			
 			self.loading_track = False # Loading complete, playback started
+			
+			if self.smtc_manager:
+				artist = ""
+				if self.video_data:
+					artist = self.video_data.get("channel_name", "")
+				self.smtc_manager.update_metadata(title=title, artist=artist)
+				self.smtc_manager.update_status(True)
 			
 				
 		except Exception as e:
