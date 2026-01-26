@@ -413,7 +413,15 @@ class SettingsDialog(wx.Dialog):
 		selected_device_id = self.device_map[self.deviceBox.Selection]
 		if not selected_device_id == config_get("audio_device"):
 			config_set("audio_device", selected_device_id)
-			restart = True # Changing audio device requires restart or re-init of player, restart is safest for global effect
+			# restart = True # Changing audio device requires restart or re-init of player, restart is safest for global effect
+			
+			# Apply immediately if possible
+			try:
+				parent = self.GetParent()
+				if parent and hasattr(parent, 'player') and parent.player:
+					parent.player.set_audio_output_device(selected_device_id)
+			except Exception as e:
+				print(f"Failed to apply audio device immediately: {e}")
 			
 		config_set("defaultformat", self.formats.Selection) if not self.formats.Selection == int(config_get('defaultformat')) else None
 		

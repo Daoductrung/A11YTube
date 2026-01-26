@@ -224,8 +224,10 @@ class MediaGui(wx.Frame):
 		self.nextButton = CustomButton(self.mainPanel, -1, _("Next Video"), name="controls")
 		self.nextButton.Show() if self.results is not None else self.nextButton.Hide()
 		
+
 		self.speedButton = CustomButton(self.mainPanel, -1, _("Speed"), name="controls")
 		self.audioTrackBtn = CustomButton(self.mainPanel, -1, _("Audio Track"), name="controls")
+		self.audioDeviceBtn = CustomButton(self.mainPanel, -1, _("Audio Device"), name="controls")
 
 		# Toggles (Checkboxes)
 		self.chkRepeat = wx.CheckBox(self.mainPanel, -1, _("Repeat"))
@@ -259,6 +261,7 @@ class MediaGui(wx.Frame):
 		if self.results: self.controlsSizer.Add(self.nextButton, 1, wx.EXPAND)
 		self.controlsSizer.Add(self.speedButton, 1, wx.EXPAND)
 		self.controlsSizer.Add(self.audioTrackBtn, 1, wx.EXPAND)
+		self.controlsSizer.Add(self.audioDeviceBtn, 1, wx.EXPAND)
 		
 		self.controlsSizer.Add(self.chkRepeat, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALL, 5)
 
@@ -354,6 +357,7 @@ class MediaGui(wx.Frame):
 		self.browserBtn.Bind(wx.EVT_BUTTON, self.onBrowser)
 
 		self.audioTrackBtn.Bind(wx.EVT_BUTTON, self.onAudioTrack)
+		self.audioDeviceBtn.Bind(wx.EVT_BUTTON, self.onAudioDevice)
 		self.settingsBtn.Bind(wx.EVT_BUTTON, lambda event: SettingsDialog(self))
 		
 		# Player Controls Bindings
@@ -676,6 +680,43 @@ class MediaGui(wx.Frame):
 			rate = rates[idx]
 			self.player.media.set_rate(rate)
 			speak(choices[idx])
+		dlg.Destroy()
+
+	def onAudioDevice(self, event):
+		if not self.player: return
+		
+		# Get Devices
+		devices = self.player.get_audio_output_devices()
+		# Format: [{'id': ..., 'name': ...}, ...]
+		
+		if not devices:
+			speak(_("No audio devices found"))
+			return
+			
+		choices = [d['name'] for d in devices]
+		ids = [d['id'] for d in devices]
+		
+		# Find current selection index
+		current_id = config_get("audio_device")
+		selection = 0
+		if current_id in ids:
+			selection = ids.index(current_id)
+			
+		dlg = wx.SingleChoiceDialog(self, _("Select Audio Output Device"), _("Audio Device"), choices)
+		dlg.SetSelection(selection)
+		
+		if dlg.ShowModal() == wx.ID_OK:
+			idx = dlg.GetSelection()
+			new_id = ids[idx]
+			
+			# Apply to Player
+			self.player.set_audio_output_device(new_id)
+			
+			# Save setting
+			config_set("audio_device", new_id)
+			
+			speak(_("Audio device changed to {}").format(choices[idx]))
+			
 		dlg.Destroy()
 
 	@has_player
