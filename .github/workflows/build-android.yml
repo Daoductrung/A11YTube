@@ -45,8 +45,9 @@ jobs:
     - name: Build Android APK
       # Use 'yes' to handle potential interactive prompts from Flet CLI
       # Use --verbose to debug
+      # Removed --include-packages as it is not supported by flet build apk
       run: |
-        yes | flet build apk --project android_version --verbose --include-packages flet yt_dlp requests ffmpeg_python
+        yes | flet build apk --project android_version --verbose
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
