@@ -25,6 +25,13 @@ jobs:
       with:
         python-version: '3.11'
 
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Install Android SDK Command-line Tools
+      run: |
+        sdkmanager --install "cmdline-tools;latest"
+
     - name: Install Flutter SDK
       uses: subosito/flutter-action@v2
       with:
