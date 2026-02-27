@@ -14,16 +14,27 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-
     - name: Set up Java
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '17'
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Flutter SDK
+      uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+        cache: true
+
+    - name: Configure Flutter
+      run: |
+        flutter config --no-analytics
+        flutter doctor -v
 
     - name: Install Flet and Dependencies
       run: |
@@ -32,9 +43,10 @@ jobs:
         pip install -r android_version/requirements.txt
 
     - name: Build Android APK
-      # Pipe 'yes' to handle Flet's interactive prompt for installing the Flutter SDK
+      # Use 'yes' to handle potential interactive prompts from Flet CLI
+      # Use --verbose to debug
       run: |
-        yes | flet build apk --project android_version --verbose
+        yes | flet build apk --project android_version --verbose --include-packages flet yt_dlp requests ffmpeg_python
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
