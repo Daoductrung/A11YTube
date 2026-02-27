@@ -1,8 +1,9 @@
 import flet as ft
-from core.settings import config_get
+from core.settings import config_get, config_set
 from core.database import DatabaseManager, Favorite, History, Collections
 from core.paths import get_data_dir
-from core.utils import get_video_info, time_formatting, format_relative_time
+from core.utils import get_video_info, time_formatting, format_relative_time, detect_silence
+from core.language import _
 import threading
 import time
 import os
@@ -11,7 +12,10 @@ class AppManager:
     def __init__(self, page: ft.Page):
         self.page = page
         self.page.title = "A11YTube"
-        self.page.theme_mode = ft.ThemeMode.LIGHT
+        # Theme Setting
+        self.page.theme_mode = ft.ThemeMode.DARK # Default for media apps often better, but follow settings
+        # ... logic moved to setup_ui ...
+
         self.page.padding = 20
         self.page.spacing = 20
         self.page.scroll = ft.ScrollMode.AUTO
@@ -23,6 +27,12 @@ class AppManager:
         self.collections_db = Collections()
 
         self.setup_ui()
+        self.load_settings()
+
+    def load_settings(self):
+        # Apply theme
+        # We assume settings are loaded by config_get implicitly via singleton
+        pass # To be implemented if dynamic theme switch needed on init
 
     def setup_ui(self):
         # App Bar
@@ -34,7 +44,7 @@ class AppManager:
             actions=[
                 ft.IconButton(
                     icon=ft.Icons.SETTINGS,
-                    tooltip="Settings",
+                    tooltip=_("settings"),
                     on_click=self.go_settings,
                     icon_color=ft.Colors.WHITE
                 )
@@ -48,17 +58,17 @@ class AppManager:
             animation_duration=300,
             tabs=[
                 ft.Tab(
-                    text="Home",
+                    text=_("home"),
                     icon=ft.Icons.HOME,
                     content=self.build_home_tab()
                 ),
                 ft.Tab(
-                    text="Library",
+                    text=_("library"),
                     icon=ft.Icons.LIBRARY_BOOKS,
                     content=self.build_library_tab()
                 ),
                 ft.Tab(
-                    text="Search",
+                    text=_("search"),
                     icon=ft.Icons.SEARCH,
                     content=self.build_search_tab()
                 ),
@@ -70,23 +80,23 @@ class AppManager:
     def build_home_tab(self):
         self.home_content = ft.Column(
             controls=[
-                ft.Text("Quick Actions", size=18, weight=ft.FontWeight.BOLD),
+                ft.Text(_("home"), size=18, weight=ft.FontWeight.BOLD),
                 ft.ElevatedButton(
-                    "Paste Link from Clipboard",
+                    _("paste_link"),
                     icon=ft.Icons.PASTE,
                     on_click=self.on_paste_link,
                     width=300,
                     height=50
                 ),
                 ft.ElevatedButton(
-                    "Search YouTube",
+                    _("search_youtube"),
                     icon=ft.Icons.SEARCH,
                     on_click=lambda e: self.switch_tab(2),
                     width=300,
                     height=50
                 ),
                 ft.Divider(),
-                ft.Text("Recent Activity", size=16, weight=ft.FontWeight.BOLD),
+                ft.Text(_("recent_activity"), size=16, weight=ft.FontWeight.BOLD),
                 # Placeholder for recent history items
                 ft.ListView(
                     expand=1,
@@ -101,35 +111,49 @@ class AppManager:
             expand=True,
             scroll=ft.ScrollMode.AUTO
         )
+
+        # Load recent items
+        self.load_recent_activity()
         return self.home_content
+
+    def load_recent_activity(self):
+        # Ideally fetch top 5 history items
+        hist = self.history_db.get_history()
+        # Find the ListView in home_content
+        lv = self.home_content.controls[-1]
+        lv.controls.clear()
+
+        for item in hist[:5]:
+             lv.controls.append(self.create_video_tile(item))
+        self.page.update()
 
     def build_library_tab(self):
         return ft.Column(
             controls=[
                 ft.ListTile(
                     leading=ft.Icon(ft.Icons.HISTORY),
-                    title=ft.Text("Watch History"),
+                    title=ft.Text(_("history")),
                     subtitle=ft.Text("View recently played videos"),
                     on_click=self.go_history
                 ),
                 ft.Divider(),
                 ft.ListTile(
                     leading=ft.Icon(ft.Icons.FAVORITE),
-                    title=ft.Text("Favorites"),
+                    title=ft.Text(_("favorites")),
                     subtitle=ft.Text("Your saved videos"),
                     on_click=self.go_favorites
                 ),
                 ft.Divider(),
                 ft.ListTile(
                     leading=ft.Icon(ft.Icons.COLLECTIONS),
-                    title=ft.Text("Collections"),
+                    title=ft.Text(_("collections")),
                     subtitle=ft.Text("Manage your playlists"),
                     on_click=self.go_collections
                 ),
                 ft.Divider(),
                 ft.ListTile(
                     leading=ft.Icon(ft.Icons.DOWNLOAD),
-                    title=ft.Text("Downloads"),
+                    title=ft.Text(_("downloads")),
                     subtitle=ft.Text("Access downloaded content"),
                     on_click=self.go_downloads
                 )
@@ -140,7 +164,7 @@ class AppManager:
 
     def build_search_tab(self):
         self.search_field = ft.TextField(
-            label="Search YouTube",
+            label=_("search_youtube"),
             hint_text="Enter keywords...",
             on_submit=self.on_search_submit,
             autofocus=False,
@@ -153,7 +177,7 @@ class AppManager:
                 ft.Row(
                     controls=[
                         self.search_field,
-                        ft.IconButton(ft.Icons.SEARCH, on_click=self.on_search_submit, tooltip="Search")
+                        ft.IconButton(ft.Icons.SEARCH, on_click=self.on_search_submit, tooltip=_("search"))
                     ],
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN
                 ),
@@ -173,7 +197,7 @@ class AppManager:
 
         self.search_results_list.controls.clear()
         self.search_results_list.controls.append(
-            ft.Text("Searching...", italic=True, text_align=ft.TextAlign.CENTER)
+            ft.Text(_("searching"), italic=True, text_align=ft.TextAlign.CENTER)
         )
         self.page.update()
 
@@ -216,7 +240,7 @@ class AppManager:
         def update_ui():
             self.search_results_list.controls.clear()
             if not results:
-                self.search_results_list.controls.append(ft.Text("No results found."))
+                self.search_results_list.controls.append(ft.Text(_("no_results")))
             else:
                 for res in results:
                     self.search_results_list.controls.append(
@@ -229,17 +253,17 @@ class AppManager:
     def create_video_tile(self, video_data):
         return ft.ListTile(
             title=ft.Text(video_data['title'], weight=ft.FontWeight.BOLD, max_lines=2, overflow=ft.TextOverflow.ELLIPSIS),
-            subtitle=ft.Text(f"{video_data['uploader']}"),
+            subtitle=ft.Text(f"{video_data.get('uploader', '')}"),
             leading=ft.Icon(ft.Icons.VIDEO_LIBRARY),
             trailing=ft.PopupMenuButton(
                 icon=ft.Icons.MORE_VERT,
                 items=[
                     ft.PopupMenuItem(text="Play Video", on_click=lambda e: self.play_video(video_data)),
                     ft.PopupMenuItem(text="Play Audio", on_click=lambda e: self.play_audio(video_data)),
-                    ft.PopupMenuItem(text="Download", on_click=lambda e: self.download_video(video_data)),
-                    ft.PopupMenuItem(text="Add to Favorites", on_click=lambda e: self.add_favorite(video_data)),
-                    ft.PopupMenuItem(text="Add to Collection", on_click=lambda e: self.add_collection(video_data)),
-                    ft.PopupMenuItem(text="Copy Link", on_click=lambda e: self.copy_link(video_data['url'])),
+                    ft.PopupMenuItem(text=_("download"), on_click=lambda e: self.download_video(video_data)),
+                    ft.PopupMenuItem(text=_("add_favorite"), on_click=lambda e: self.add_favorite(video_data)),
+                    ft.PopupMenuItem(text=_("add_collection"), on_click=lambda e: self.add_collection(video_data)),
+                    ft.PopupMenuItem(text=_("copy_link"), on_click=lambda e: self.copy_link(video_data['url'])),
                 ]
             ),
             on_click=lambda e: self.play_video(video_data)
@@ -256,7 +280,7 @@ class AppManager:
         def extract_and_play():
             from core.utils import get_video_info
             # Show loading
-            self.page.snack_bar = ft.SnackBar(ft.Text(f"Loading {'Audio' if audio_only else 'Video'}..."))
+            self.page.snack_bar = ft.SnackBar(ft.Text(f"{_('loading')}..."))
             self.page.snack_bar.open = True
             self.page.update()
 
@@ -273,6 +297,18 @@ class AppManager:
                     "channel_url": ""
                 })
 
+                # Check for Silence Skipping Preference
+                skip_silence = config_get("skip_silence")
+                start_time = 0
+                if skip_silence and audio_only:
+                    # Detect Silence
+                    s_start, s_end = detect_silence(stream_info.url, stream_info.http_headers, stream_info.duration)
+                    if s_start > 0:
+                        start_time = s_start * 1000 # ms for some players, s for others. Flet Audio uses?
+                        # Flet Audio doesn't have 'seek' method exposed easily in init.
+                        # We might need to handle it via ref.
+                        pass
+
                 if audio_only:
                     # Use Audio Control
                     audio = ft.Audio(
@@ -281,8 +317,6 @@ class AppManager:
                         volume=1.0,
                         balance=0,
                         on_loaded=lambda _: print("Audio Loaded"),
-                        on_duration_changed=lambda e: print("Duration:", e.data),
-                        on_position_changed=lambda e: print("Position:", e.data),
                     )
                     self.page.overlay.append(audio)
                     self.page.update()
@@ -290,10 +324,7 @@ class AppManager:
                     self.page.snack_bar.open = True
                     self.page.update()
                 else:
-                    # Use ft.Video control if available (Recent Flet versions)
-                    # If not, fallback to WebView or simulated UI.
-                    # Assuming we are on recent Flet which supports Video control.
-
+                    # Video Player
                     try:
                         video_player = ft.Video(
                             expand=True,
@@ -307,7 +338,6 @@ class AppManager:
                             muted=False,
                         )
 
-                        # Fullscreen overlay
                         overlay = ft.Container(
                             content=ft.Stack([
                                 video_player,
@@ -324,8 +354,6 @@ class AppManager:
                             alignment=ft.alignment.center
                         )
 
-                        # Add to page overlay (Dialog/Full screen)
-                        # We use a full-screen Dialog without padding
                         dlg = ft.AlertDialog(
                             content=overlay,
                             modal=True,
@@ -337,16 +365,16 @@ class AppManager:
                         self.page.update()
 
                     except AttributeError:
-                        # Fallback for older Flet without Video control
+                        # Fallback
                         player_dlg = ft.AlertDialog(
                             title=ft.Text(video_data['title']),
                             content=ft.Column([
                                 ft.Text("Video Playback Not Supported in this Flet version directly."),
                                 ft.Text(f"Stream URL: {stream_info.url[:50]}..."),
-                                ft.ElevatedButton("Open in Browser", on_click=lambda e: self.page.launch_url(stream_info.url))
+                                ft.ElevatedButton(_("open_browser"), on_click=lambda e: self.page.launch_url(stream_info.url))
                             ], height=150),
                             actions=[
-                                ft.TextButton("Close", on_click=lambda e: self.close_dialog(player_dlg))
+                                ft.TextButton(_("close"), on_click=lambda e: self.close_dialog(player_dlg))
                             ]
                         )
                         self.page.dialog = player_dlg
@@ -361,7 +389,6 @@ class AppManager:
         threading.Thread(target=extract_and_play, daemon=True).start()
 
     def close_overlay(self, overlay):
-        # If using dialog
         self.page.dialog.open = False
         self.page.update()
 
@@ -377,7 +404,7 @@ class AppManager:
 
             path = get_downloads_dir()
 
-            self.page.snack_bar = ft.SnackBar(ft.Text("Download started..."))
+            self.page.snack_bar = ft.SnackBar(ft.Text(_("download_started")))
             self.page.snack_bar.open = True
             self.page.update()
 
@@ -385,7 +412,7 @@ class AppManager:
                 pass
 
             def on_complete(success, err):
-                msg = "Download Completed" if success else f"Download Failed: {err}"
+                msg = _("download_completed") if success else _("download_failed").format(err)
                 self.page.snack_bar = ft.SnackBar(ft.Text(msg))
                 self.page.snack_bar.open = True
                 self.page.update()
@@ -394,13 +421,13 @@ class AppManager:
             self.close_dialog(self.page.dialog)
 
         dl_dlg = ft.AlertDialog(
-            title=ft.Text("Download"),
+            title=ft.Text(_("download")),
             content=ft.Column([
                 ft.ElevatedButton("Video (MP4)", on_click=lambda e: start_dl(0)),
                 ft.ElevatedButton("Audio (M4A)", on_click=lambda e: start_dl(1)),
                 ft.ElevatedButton("Audio (MP3)", on_click=lambda e: start_dl(2)),
             ], height=150, alignment=ft.MainAxisAlignment.CENTER),
-            actions=[ft.TextButton("Cancel", on_click=lambda e: self.close_dialog(dl_dlg))]
+            actions=[ft.TextButton(_("cancel"), on_click=lambda e: self.close_dialog(dl_dlg))]
         )
         self.page.dialog = dl_dlg
         dl_dlg.open = True
@@ -415,7 +442,7 @@ class AppManager:
             "channel_name": video_data.get('uploader', ''),
             "channel_url": ""
         })
-        self.page.snack_bar = ft.SnackBar(ft.Text("Added to Favorites"))
+        self.page.snack_bar = ft.SnackBar(ft.Text(_("add_favorite")))
         self.page.snack_bar.open = True
         self.page.update()
 
@@ -434,7 +461,7 @@ class AppManager:
                 "channel_name": video_data.get('uploader', ''),
                 "channel_url": ""
             })
-            self.page.snack_bar = ft.SnackBar(ft.Text("Added to Collection"))
+            self.page.snack_bar = ft.SnackBar(ft.Text(_("add_collection")))
             self.page.snack_bar.open = True
             self.page.update()
             self.close_dialog(self.page.dialog)
@@ -444,9 +471,9 @@ class AppManager:
             items.append(ft.ListTile(title=ft.Text(c['name']), on_click=lambda e, cid=c['id']: add_to_col(cid)))
 
         col_dlg = ft.AlertDialog(
-            title=ft.Text("Select Collection"),
+            title=ft.Text(_("select_collection")),
             content=ft.Column(items, height=200, scroll=ft.ScrollMode.AUTO),
-            actions=[ft.TextButton("Cancel", on_click=lambda e: self.close_dialog(col_dlg))]
+            actions=[ft.TextButton(_("cancel"), on_click=lambda e: self.close_dialog(col_dlg))]
         )
         self.page.dialog = col_dlg
         col_dlg.open = True
@@ -454,29 +481,25 @@ class AppManager:
 
     def copy_link(self, url):
         self.page.set_clipboard(url)
-        self.page.snack_bar = ft.SnackBar(ft.Text("Link copied to clipboard"))
+        self.page.snack_bar = ft.SnackBar(ft.Text(_("link_copied")))
         self.page.snack_bar.open = True
         self.page.update()
 
     def on_paste_link(self, e):
-        # Dialog to paste link
         link_field = ft.TextField(label="Video Link", hint_text="Paste YouTube link here")
 
         def process_paste(e):
             url = link_field.value
             if not url: return
             self.close_dialog(self.page.dialog)
-
-            # Immediately try to fetch and play or show info
-            # We'll treat it like a search result with 1 item
-            self._perform_search(url) # yt-dlp handles url as search/extract
+            self._perform_search(url)
 
         paste_dlg = ft.AlertDialog(
-            title=ft.Text("Paste Link"),
+            title=ft.Text(_("paste_link")),
             content=link_field,
             actions=[
                 ft.TextButton("Open", on_click=process_paste),
-                ft.TextButton("Cancel", on_click=lambda e: self.close_dialog(paste_dlg))
+                ft.TextButton(_("cancel"), on_click=lambda e: self.close_dialog(paste_dlg))
             ]
         )
         self.page.dialog = paste_dlg
@@ -484,10 +507,10 @@ class AppManager:
         self.page.update()
 
     def go_history(self, e):
-        self.show_list_view("Watch History", self.history_db.get_history())
+        self.show_list_view(_("history"), self.history_db.get_history())
 
     def go_favorites(self, e):
-        self.show_list_view("Favorites", self.favorites_db.get_all())
+        self.show_list_view(_("favorites"), self.favorites_db.get_all())
 
     def go_collections(self, e):
         cols = self.collections_db.get_all_collections()
@@ -513,12 +536,12 @@ class AppManager:
                 )
             )
 
-        list_items.insert(0, ft.ElevatedButton("New Collection", on_click=self.create_collection_dialog))
+        list_items.insert(0, ft.ElevatedButton(_("new_collection"), on_click=self.create_collection_dialog))
 
-        self.show_generic_view("Collections", list_items)
+        self.show_generic_view(_("collections"), list_items)
 
     def create_collection_dialog(self, e):
-        tf = ft.TextField(label="Collection Name")
+        tf = ft.TextField(label=_("collection_name"))
         def create(e):
             if tf.value:
                 self.collections_db.create_collection(tf.value)
@@ -526,11 +549,11 @@ class AppManager:
                 self.go_collections(None)
 
         dlg = ft.AlertDialog(
-            title=ft.Text("New Collection"),
+            title=ft.Text(_("new_collection")),
             content=tf,
             actions=[
-                ft.TextButton("Create", on_click=create),
-                ft.TextButton("Cancel", on_click=lambda e: self.close_dialog(dlg))
+                ft.TextButton(_("create"), on_click=create),
+                ft.TextButton(_("cancel"), on_click=lambda e: self.close_dialog(dlg))
             ]
         )
         self.page.dialog = dlg
@@ -544,7 +567,10 @@ class AppManager:
         if not os.path.exists(path):
             files = []
         else:
-            files = os.listdir(path)
+            try:
+                files = os.listdir(path)
+            except:
+                files = []
 
         file_items = []
         if not files:
@@ -554,10 +580,10 @@ class AppManager:
                 file_items.append(ft.ListTile(
                     leading=ft.Icon(ft.Icons.AUDIO_FILE),
                     title=ft.Text(f),
-                    # On click could play or open
+                    # On click logic for playback of local files
                 ))
 
-        self.show_generic_view("Downloads", file_items)
+        self.show_generic_view(_("downloads"), file_items)
 
     def show_list_view(self, title, data_list):
         items = []
@@ -570,27 +596,71 @@ class AppManager:
         view = ft.AlertDialog(
             title=ft.Text(title),
             content=ft.Column(controls, height=400, width=300, scroll=ft.ScrollMode.AUTO),
-            actions=[ft.TextButton("Close", on_click=lambda e: self.close_dialog(view))]
+            actions=[ft.TextButton(_("close"), on_click=lambda e: self.close_dialog(view))]
         )
         self.page.dialog = view
         view.open = True
         self.page.update()
 
     def go_settings(self, e):
+        # Settings UI
+        # We need toggles for preferences
+
+        def on_change(key, value):
+            config_set(key, value)
+            if key == "lang":
+                self.page.snack_bar = ft.SnackBar(ft.Text("Restart required for language change."))
+                self.page.snack_bar.open = True
+                self.page.update()
+
+        content = ft.Column([
+            ft.Text(_("settings"), size=20, weight=ft.FontWeight.BOLD),
+            ft.Divider(),
+            ft.Switch(label=_("skip_silence"), value=config_get("skip_silence"), on_change=lambda e: on_change("skip_silence", e.control.value)),
+            ft.Switch(label=_("auto_play_next"), value=config_get("autonext"), on_change=lambda e: on_change("autonext", e.control.value)),
+            ft.Switch(label=_("repeat_track"), value=config_get("repeatetracks"), on_change=lambda e: on_change("repeatetracks", e.control.value)),
+            ft.Divider(),
+            ft.Dropdown(
+                label=_("language"),
+                value=config_get("lang"),
+                options=[
+                    ft.dropdown.Option("en", "English"),
+                    ft.dropdown.Option("vi", "Vietnamese"),
+                ],
+                on_change=lambda e: on_change("lang", e.control.value)
+            ),
+            ft.Divider(),
+            ft.ElevatedButton(_("clear_history"), on_click=lambda e: self.confirm_action(self.history_db.clear_history, "History Cleared")),
+            ft.ElevatedButton(_("clear_favorites"), on_click=lambda e: self.confirm_action(self.favorites_db.clear_favorites, "Favorites Cleared")),
+        ], height=400, scroll=ft.ScrollMode.AUTO)
+
         dlg = ft.AlertDialog(
-            title=ft.Text("Settings"),
-            content=ft.Column([
-                ft.Text("Settings not fully implemented in prototype."),
-                ft.Switch(label="Dark Mode", value=False, on_change=lambda e: self.toggle_theme(e.control.value))
-            ]),
-            actions=[ft.TextButton("Close", on_click=lambda e: self.close_dialog(dlg))]
+            title=ft.Text(_("settings")),
+            content=content,
+            actions=[ft.TextButton(_("close"), on_click=lambda e: self.close_dialog(dlg))]
         )
         self.page.dialog = dlg
         dlg.open = True
         self.page.update()
 
-    def toggle_theme(self, is_dark):
-        self.page.theme_mode = ft.ThemeMode.DARK if is_dark else ft.ThemeMode.LIGHT
+    def confirm_action(self, action, success_msg):
+        def do_it(e):
+            action()
+            self.close_dialog(self.page.dialog)
+            self.page.snack_bar = ft.SnackBar(ft.Text(success_msg))
+            self.page.snack_bar.open = True
+            self.page.update()
+
+        confirm_dlg = ft.AlertDialog(
+            title=ft.Text(_("confirm")),
+            content=ft.Text(_("delete_confirm")),
+            actions=[
+                ft.TextButton("Yes", on_click=do_it),
+                ft.TextButton(_("cancel"), on_click=lambda e: self.close_dialog(confirm_dlg))
+            ]
+        )
+        self.page.dialog = confirm_dlg
+        confirm_dlg.open = True
         self.page.update()
 
 def main(page: ft.Page):

@@ -1,0 +1,6 @@
+flet
+yt-dlp
+requests
+ffmpeg-python
+# Standard library modules (os, re, etc) are included.
+# 'sqlite3' is part of stdlib.
