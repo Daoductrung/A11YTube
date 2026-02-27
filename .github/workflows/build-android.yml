@@ -31,6 +31,10 @@ jobs:
         channel: 'stable'
         cache: true
 
+    - name: Accept Android Licenses
+      run: |
+        yes | flutter doctor --android-licenses
+
     - name: Configure Flutter
       run: |
         flutter config --no-analytics
@@ -45,7 +49,6 @@ jobs:
     - name: Build Android APK
       # Use 'yes' to handle potential interactive prompts from Flet CLI
       # Use --verbose to debug
-      # Removed --include-packages as it is not supported by flet build apk
       run: |
         yes | flet build apk --project android_version --verbose
 
