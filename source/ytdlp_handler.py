@@ -6,7 +6,6 @@ import threading
 from paths import settings_path
 
 def get_ytdlp_path():
-    # Store yt-dlp binary in the settings_path (appdata)
     if sys.platform.startswith('win'):
         return os.path.join(settings_path, 'yt-dlp.exe')
     else:
@@ -43,8 +42,24 @@ def update_ytdlp():
     if os.path.exists(path):
         try:
             subprocess.run([path, "-U"], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except Exception:
+            pass
+
+def manual_update_ytdlp(parent_window):
+    import wx
+    path = get_ytdlp_path()
+    if os.path.exists(path):
+        try:
+            kwargs = {}
+            if os.name == 'nt':
+                kwargs['creationflags'] = subprocess.CREATE_NO_WINDOW
+            result = subprocess.run([path, "-U"], check=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, **kwargs)
+            out = result.stdout.strip()
+            wx.CallAfter(wx.MessageBox, out if out else _("yt-dlp updated successfully."), _("yt-dlp Update"), parent=parent_window)
         except Exception as e:
-            print("Failed to update yt-dlp:", e)
+            wx.CallAfter(wx.MessageBox, _("Failed to update yt-dlp: {}").format(e), _("Error"), style=wx.ICON_ERROR, parent=parent_window)
+    else:
+        wx.CallAfter(wx.MessageBox, _("yt-dlp is not installed."), _("Error"), style=wx.ICON_ERROR, parent=parent_window)
 
 def ensure_ytdlp_exists(splash=None):
     if not is_ytdlp_downloaded():

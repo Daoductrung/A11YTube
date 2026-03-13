@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: A11YTube 0.2.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-13 16:04+0000\n"
+"POT-Creation-Date: 2026-03-13 18:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "&Change Path"
 msgstr ""
 
-#: utiles.py:293
+#: utiles.py:204
 msgid "1 month ago"
 msgstr ""
 
-#: utiles.py:299
+#: utiles.py:208
 msgid "1 year ago"
 msgstr ""
 
@@ -37,7 +37,7 @@ msgstr ""
 msgid "A YouTube {} link has been detected in the clipboard. Please select the desired action."
 msgstr ""
 
-#: utiles.py:346
+#: utiles.py:247
 msgid "A new update is available. Do you want to download it now?"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 msgid "A11YTube Starting"
 msgstr ""
 
-#: A11YTube.py:431
+#: A11YTube.py:434
 msgid "A11YTube User Guide"
 msgstr ""
 
@@ -54,11 +54,11 @@ msgstr ""
 msgid "A11YTube is starting..."
 msgstr ""
 
-#: A11YTube.py:454
+#: A11YTube.py:465
 msgid "About"
 msgstr ""
 
-#: A11YTube.py:157
+#: A11YTube.py:158
 msgid "About..."
 msgstr ""
 
@@ -102,8 +102,8 @@ msgstr ""
 msgid "Alert"
 msgstr ""
 
-#: utiles.py:337
-#: utiles.py:357
+#: utiles.py:242
+#: utiles.py:257
 msgid "An error occurred while connecting to the update service. Please check your internet connection and try again."
 msgstr ""
 
@@ -121,7 +121,7 @@ msgstr ""
 msgid "An error occurred: {}"
 msgstr ""
 
-#: A11YTube.py:481
+#: A11YTube.py:492
 msgid "Application is already running"
 msgstr ""
 
@@ -178,16 +178,18 @@ msgstr ""
 msgid "Audio Tracks"
 msgstr ""
 
-#: download_handler/downloader.py:194
-#: download_handler/downloader.py:223
+#: download_handler/downloader.py:135
 #: gui/activity_dialog.py:39
 msgid "Authentication Error"
 msgstr ""
 
-#: utiles.py:172
-#: utiles.py:216
-#: download_handler/downloader.py:193
-#: download_handler/downloader.py:222
+#: utiles.py:75
+msgid "Authentication Error: "
+msgstr ""
+
+#: utiles.py:129
+#: utiles.py:146
+#: download_handler/downloader.py:134
 msgid "Authentication failed. Your cookies.txt might be expired or invalid. Please delete and re-import a fresh one."
 msgstr ""
 
@@ -254,14 +256,10 @@ msgstr ""
 msgid "Beginning of video"
 msgstr ""
 
-#: youtube_browser/search_handler.py:50
-#: youtube_browser/search_handler.py:186
-#: youtube_browser/search_handler.py:195
+#: youtube_browser/search_handler.py:41
+#: youtube_browser/search_handler.py:135
+#: youtube_browser/search_handler.py:141
 msgid "By"
-msgstr ""
-
-#: download_handler/downloader.py:37
-msgid "Bytes"
 msgstr ""
 
 #: gui/settings_dialog.py:57
@@ -280,11 +278,11 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: A11YTube.py:439
+#: A11YTube.py:442
 msgid "Changelog"
 msgstr ""
 
-#: A11YTube.py:156
+#: A11YTube.py:157
 msgid "Changelog (Ctrl+Shift+C)"
 msgstr ""
 
@@ -292,8 +290,12 @@ msgstr ""
 msgid "Check for updates (Ctrl+Shift+U)"
 msgstr ""
 
-#: A11YTube.py:444
+#: A11YTube.py:455
 msgid "Checking for updates. Please wait"
+msgstr ""
+
+#: A11YTube.py:449
+msgid "Checking for yt-dlp updates. Please wait..."
 msgstr ""
 
 #: gui/collections.py:491
@@ -372,7 +374,7 @@ msgstr ""
 msgid "Collections Manager"
 msgstr ""
 
-#: download_handler/downloader.py:199
+#: download_handler/downloader.py:139
 msgid "Completed with Errors"
 msgstr ""
 
@@ -475,16 +477,16 @@ msgstr ""
 msgid "Description (Ctrl+Shift+D)"
 msgstr ""
 
-#: youtube_browser/extras.py:41
+#: youtube_browser/extras.py:14
 msgid "Description not available."
 msgstr ""
 
-#: A11YTube.py:453
+#: A11YTube.py:464
 #: gui/description.py:15
 msgid "Description: "
 msgstr ""
 
-#: A11YTube.py:452
+#: A11YTube.py:463
 msgid "Developed By"
 msgstr ""
 
@@ -592,11 +594,11 @@ msgstr ""
 msgid "Download Video"
 msgstr ""
 
-#: download_handler/downloader.py:204
+#: download_handler/downloader.py:144
 msgid "Download completed successfully"
 msgstr ""
 
-#: download_handler/downloader.py:199
+#: download_handler/downloader.py:139
 msgid "Download completed, but {} videos failed to download."
 msgstr ""
 
@@ -627,7 +629,10 @@ msgstr ""
 msgid "Download {} videos?"
 msgstr ""
 
-#: download_handler/downloader.py:72
+#: download_handler/downloader.py:92
+msgid "Downloaded: {}"
+msgstr ""
+
 #: gui/download_progress.py:10
 msgid "Downloaded: {} {}"
 msgstr ""
@@ -645,7 +650,7 @@ msgid "Downloading update {}%"
 msgstr ""
 
 #: A11YTube.py:33
-#: ytdlp_handler.py:53
+#: ytdlp_handler.py:67
 msgid "Downloading yt-dlp core..."
 msgstr ""
 
@@ -658,10 +663,14 @@ msgstr ""
 msgid "Downloading {} videos"
 msgstr ""
 
-#: youtube_browser/search_handler.py:50
-#: youtube_browser/search_handler.py:237
+#: youtube_browser/search_handler.py:41
+#: youtube_browser/search_handler.py:167
 #: media_player/media_gui.py:1007
 msgid "Duration: {}"
+msgstr ""
+
+#: download_handler/downloader.py:93
+msgid "ETA: {}"
 msgstr ""
 
 #: media_player/media_gui.py:750
@@ -669,7 +678,7 @@ msgstr ""
 msgid "Elapsed: {}"
 msgstr ""
 
-#: A11YTube.py:158
+#: A11YTube.py:159
 msgid "Email: trung@ddt.one"
 msgstr ""
 
@@ -691,11 +700,11 @@ msgstr ""
 msgid "Enter video link to play"
 msgstr ""
 
-#: A11YTube.py:436
-#: utiles.py:338
-#: utiles.py:358
-#: download_handler/downloader.py:230
-#: download_handler/downloader.py:236
+#: A11YTube.py:439
+#: utiles.py:242
+#: utiles.py:257
+#: ytdlp_handler.py:62
+#: ytdlp_handler.py:60
 #: youtube_browser/browser.py:482
 #: youtube_browser/browser.py:574
 #: youtube_browser/browser.py:594
@@ -730,8 +739,8 @@ msgstr ""
 msgid "Error exporting collection: {}"
 msgstr ""
 
-#: youtube_browser/extras.py:68
-#: youtube_browser/extras.py:65
+#: youtube_browser/extras.py:34
+#: youtube_browser/extras.py:32
 msgid "Error fetching description: {}"
 msgstr ""
 
@@ -781,6 +790,10 @@ msgstr ""
 msgid "Failed to initialize media player. Please check your settings or installation."
 msgstr ""
 
+#: ytdlp_handler.py:60
+msgid "Failed to update yt-dlp: {}"
+msgstr ""
+
 #: media_player/media_gui.py:669
 #: media_player/media_gui.py:950
 msgid "Fast"
@@ -802,7 +815,7 @@ msgstr ""
 msgid "Favorites: "
 msgstr ""
 
-#: A11YTube.py:406
+#: A11YTube.py:409
 msgid "Feature Disabled"
 msgstr ""
 
@@ -846,10 +859,6 @@ msgstr ""
 msgid "Full screen on"
 msgstr ""
 
-#: download_handler/downloader.py:43
-msgid "GB"
-msgstr ""
-
 #: youtube_browser/browser.py:216
 #: gui/favorites.py:150
 #: gui/playlist_dialog.py:125
@@ -862,11 +871,11 @@ msgstr ""
 msgid "Going back to"
 msgstr ""
 
-#: A11YTube.py:164
+#: A11YTube.py:165
 msgid "Help"
 msgstr ""
 
-#: A11YTube.py:252
+#: A11YTube.py:253
 msgid "Help Options"
 msgstr ""
 
@@ -874,11 +883,11 @@ msgstr ""
 msgid "History cleared"
 msgstr ""
 
-#: A11YTube.py:164
+#: A11YTube.py:165
 msgid "Home"
 msgstr ""
 
-#: A11YTube.py:246
+#: A11YTube.py:247
 msgid "Home Options"
 msgstr ""
 
@@ -924,14 +933,6 @@ msgstr ""
 msgid "Instructions"
 msgstr ""
 
-#: download_handler/downloader.py:230
-msgid "Invalid link. Please try another link, or check your internet connection."
-msgstr ""
-
-#: download_handler/downloader.py:39
-msgid "KB"
-msgstr ""
-
 #: youtube_browser/browser.py:386
 #: media_player/media_gui.py:1779
 #: gui/favorites.py:195
@@ -940,7 +941,7 @@ msgstr ""
 msgid "Link copied successfully"
 msgstr ""
 
-#: youtube_browser/search_handler.py:231
+#: youtube_browser/search_handler.py:162
 msgid "Live"
 msgstr ""
 
@@ -994,10 +995,6 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: download_handler/downloader.py:41
-msgid "MB"
-msgstr ""
-
 #: gui/settings_dialog.py:163
 msgid "MP3 conversion quality: "
 msgstr ""
@@ -1043,7 +1040,7 @@ msgstr ""
 msgid "More videos loaded"
 msgstr ""
 
-#: A11YTube.py:165
+#: A11YTube.py:166
 msgid "Navigation"
 msgstr ""
 
@@ -1053,7 +1050,7 @@ msgstr ""
 msgid "New Collection"
 msgstr ""
 
-#: utiles.py:346
+#: utiles.py:247
 msgid "New Update"
 msgstr ""
 
@@ -1065,11 +1062,11 @@ msgstr ""
 msgid "No Filter"
 msgstr ""
 
-#: utiles.py:353
+#: utiles.py:254
 msgid "No Update"
 msgstr ""
 
-#: A11YTube.py:436
+#: A11YTube.py:439
 msgid "No changelog available."
 msgstr ""
 
@@ -1086,7 +1083,7 @@ msgstr ""
 msgid "No cookies found to delete."
 msgstr ""
 
-#: youtube_browser/extras.py:43
+#: youtube_browser/extras.py:16
 msgid "No description available."
 msgstr ""
 
@@ -1171,13 +1168,13 @@ msgstr ""
 msgid "Opening"
 msgstr ""
 
-#: A11YTube.py:169
+#: A11YTube.py:170
 #: youtube_browser/browser.py:88
 #: media_player/media_gui.py:293
 msgid "Options"
 msgstr ""
 
-#: A11YTube.py:170
+#: A11YTube.py:171
 msgid "Options List"
 msgstr ""
 
@@ -1192,7 +1189,7 @@ msgstr ""
 msgid "Paused"
 msgstr ""
 
-#: download_handler/downloader.py:72
+#: download_handler/downloader.py:90
 #: gui/download_progress.py:10
 msgid "Percentage: {}%"
 msgstr ""
@@ -1263,7 +1260,7 @@ msgstr ""
 msgid "Player Controls"
 msgstr ""
 
-#: A11YTube.py:378
+#: A11YTube.py:381
 #: youtube_browser/browser.py:158
 #: youtube_browser/browser.py:170
 #: gui/favorites.py:111
@@ -1281,7 +1278,7 @@ msgstr ""
 msgid "Playing suggested video"
 msgstr ""
 
-#: youtube_browser/search_handler.py:192
+#: youtube_browser/search_handler.py:140
 #: gui/search_dialog.py:27
 msgid "Playlist"
 msgstr ""
@@ -1314,7 +1311,7 @@ msgstr ""
 msgid "Program Language: "
 msgstr ""
 
-#: A11YTube.py:450
+#: A11YTube.py:461
 msgid "Program Name"
 msgstr ""
 
@@ -1322,7 +1319,6 @@ msgstr ""
 msgid "Ready"
 msgstr ""
 
-#: download_handler/downloader.py:72
 #: gui/download_progress.py:10
 msgid "Remaining: {} {}"
 msgstr ""
@@ -1547,7 +1543,10 @@ msgstr ""
 msgid "Speed"
 msgstr ""
 
-#: download_handler/downloader.py:72
+#: download_handler/downloader.py:94
+msgid "Speed: {}"
+msgstr ""
+
 #: gui/download_progress.py:10
 msgid "Speed: {} {}"
 msgstr ""
@@ -1556,7 +1555,7 @@ msgstr ""
 msgid "Stop Download"
 msgstr ""
 
-#: download_handler/downloader.py:204
+#: download_handler/downloader.py:144
 #: gui/settings_dialog.py:355
 #: gui/settings_dialog.py:386
 #: gui/settings_dialog.py:368
@@ -1578,11 +1577,7 @@ msgstr ""
 msgid "Switched to"
 msgstr ""
 
-#: download_handler/downloader.py:45
-msgid "TB"
-msgstr ""
-
-#: A11YTube.py:406
+#: A11YTube.py:409
 msgid "This feature is disabled because 'Continue watching' is turned off in Settings."
 msgstr ""
 
@@ -1590,12 +1585,10 @@ msgstr ""
 msgid "This program aims to provide the easiest way for blind users to browse and download from YouTube hosting service."
 msgstr ""
 
-#: utiles.py:159
-#: utiles.py:204
-#: download_handler/downloader.py:191
-#: download_handler/downloader.py:220
-#: youtube_browser/extras.py:34
-#: youtube_browser/extras.py:64
+#: utiles.py:125
+#: utiles.py:142
+#: download_handler/downloader.py:132
+#: youtube_browser/extras.py:30
 msgid "This video is age restricted or requires a valid cookies.txt file to play."
 msgstr ""
 
@@ -1615,7 +1608,7 @@ msgstr ""
 msgid "To fix login errors, please manually import cookies.txt from your browser."
 msgstr ""
 
-#: utiles.py:285
+#: utiles.py:199
 msgid "Today"
 msgstr ""
 
@@ -1623,15 +1616,18 @@ msgstr ""
 msgid "Toggle Favorite	Ctrl+F"
 msgstr ""
 
-#: A11YTube.py:164
+#: A11YTube.py:165
 msgid "Tools"
 msgstr ""
 
-#: A11YTube.py:249
+#: A11YTube.py:250
 msgid "Tools Options"
 msgstr ""
 
-#: download_handler/downloader.py:72
+#: download_handler/downloader.py:91
+msgid "Total Size: {}"
+msgstr ""
+
 #: gui/download_progress.py:10
 msgid "Total Size: {} {}"
 msgstr ""
@@ -1644,37 +1640,37 @@ msgstr ""
 msgid "Unable to play next: {}"
 msgstr ""
 
-#: youtube_browser/search_handler.py:154
+#: youtube_browser/search_handler.py:110
 #: media_player/media_gui.py:2046
 #: media_player/media_gui.py:2052
 msgid "Unknown"
 msgstr ""
 
-#: utiles.py:553
-#: utiles.py:482
-#: utiles.py:662
-#: youtube_browser/extras.py:47
-#: youtube_browser/search_handler.py:30
+#: utiles.py:317
+#: utiles.py:350
+#: utiles.py:393
+#: youtube_browser/extras.py:20
+#: youtube_browser/search_handler.py:23
 #: youtube_browser/browser.py:322
 #: gui/collections.py:662
 msgid "Unknown Channel"
 msgstr ""
 
-#: youtube_browser/search_handler.py:21
+#: youtube_browser/search_handler.py:14
 msgid "Unknown Playlist"
 msgstr ""
 
-#: utiles.py:550
-#: utiles.py:551
-#: utiles.py:479
-#: utiles.py:480
-#: utiles.py:659
-#: utiles.py:660
-#: youtube_browser/search_handler.py:26
+#: utiles.py:314
+#: utiles.py:315
+#: utiles.py:347
+#: utiles.py:348
+#: utiles.py:390
+#: utiles.py:391
+#: youtube_browser/search_handler.py:19
 msgid "Unknown Title"
 msgstr ""
 
-#: youtube_browser/extras.py:44
+#: youtube_browser/extras.py:17
 msgid "Unknown Video"
 msgstr ""
 
@@ -1682,11 +1678,15 @@ msgstr ""
 msgid "Update downloaded successfully. Press OK to start installation."
 msgstr ""
 
-#: A11YTube.py:155
+#: A11YTube.py:153
+msgid "Update yt-dlp core"
+msgstr ""
+
+#: A11YTube.py:156
 msgid "User Guide (F1)"
 msgstr ""
 
-#: A11YTube.py:451
+#: A11YTube.py:462
 msgid "Version"
 msgstr ""
 
@@ -1771,19 +1771,19 @@ msgstr ""
 msgid "Watch History: "
 msgstr ""
 
-#: A11YTube.py:159
+#: A11YTube.py:160
 msgid "Website: https://ddt.one"
 msgstr ""
 
-#: A11YTube.py:228
+#: A11YTube.py:229
 msgid "Welcome to A11YTube"
 msgstr ""
 
-#: utiles.py:287
+#: utiles.py:200
 msgid "Yesterday"
 msgstr ""
 
-#: utiles.py:353
+#: utiles.py:254
 msgid "You are running the latest version."
 msgstr ""
 
@@ -1801,15 +1801,15 @@ msgstr ""
 msgid "channel"
 msgstr ""
 
-#: utiles.py:245
+#: utiles.py:171
 msgid "one hour"
 msgstr ""
 
-#: utiles.py:231
+#: utiles.py:163
 msgid "one minute"
 msgstr ""
 
-#: utiles.py:238
+#: utiles.py:167
 msgid "one second"
 msgstr ""
 
@@ -1824,15 +1824,15 @@ msgstr ""
 msgid "seconds"
 msgstr ""
 
-#: utiles.py:247
+#: utiles.py:172
 msgid "two hours"
 msgstr ""
 
-#: utiles.py:233
+#: utiles.py:164
 msgid "two minutes"
 msgstr ""
 
-#: utiles.py:240
+#: utiles.py:168
 msgid "two seconds"
 msgstr ""
 
@@ -1846,38 +1846,54 @@ msgstr ""
 msgid "videos"
 msgstr ""
 
-#: utiles.py:262
+#: ytdlp_handler.py:58
+msgid "yt-dlp Update"
+msgstr ""
+
+#: utiles.py:76
+msgid "yt-dlp error: "
+msgstr ""
+
+#: ytdlp_handler.py:62
+msgid "yt-dlp is not installed."
+msgstr ""
+
+#: ytdlp_handler.py:58
+msgid "yt-dlp updated successfully."
+msgstr ""
+
+#: utiles.py:181
 msgid "{} and {}"
 msgstr ""
 
-#: utiles.py:264
+#: utiles.py:182
 msgid "{} and {} and {}"
 msgstr ""
 
-#: utiles.py:289
+#: utiles.py:201
 msgid "{} days ago"
 msgstr ""
 
-#: utiles.py:249
+#: utiles.py:173
 msgid "{} hours"
 msgstr ""
 
-#: utiles.py:235
+#: utiles.py:165
 msgid "{} minutes"
 msgstr ""
 
-#: utiles.py:295
+#: utiles.py:205
 msgid "{} months ago"
 msgstr ""
 
-#: utiles.py:242
+#: utiles.py:169
 msgid "{} seconds"
 msgstr ""
 
-#: youtube_browser/search_handler.py:229
+#: youtube_browser/search_handler.py:162
 msgid "{} views"
 msgstr ""
 
-#: utiles.py:301
+#: utiles.py:209
 msgid "{} years ago"
 msgstr ""

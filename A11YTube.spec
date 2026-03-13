@@ -44,7 +44,7 @@ a = Analysis(
         (os.path.join(source_dir, 'download_handler'), 'download_handler'),
         # database.py and others are collected via analysis
     ],
-    hiddenimports=['wx', 'vlc', 'yt_dlp', 'pyperclip', 'requests', 'bs4', 'json', 're', 'threading', 'subprocess', 'shutil', 'os', 'sys', 'ctypes', 'locale', 'webbrowser', 'pyaudio', 'speech_recognition'],
+    hiddenimports=['wx', 'vlc', 'pyperclip', 'requests', 'bs4', 'json', 're', 'threading', 'subprocess', 'shutil', 'os', 'sys', 'ctypes', 'locale', 'webbrowser', 'pyaudio', 'speech_recognition'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

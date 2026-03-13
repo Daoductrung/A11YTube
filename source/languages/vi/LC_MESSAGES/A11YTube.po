@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: A11YTube 0.2.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-13 16:04+0000\n"
-"PO-Revision-Date: 2026-03-13 16:04+0000\n"
+"POT-Creation-Date: 2026-03-13 18:07+0000\n"
+"PO-Revision-Date: 2026-03-13 18:07+0000\n"
 "Last-Translator: Full Name <email@example.com>\n"
 "Language-Team: \n"
 "Language: vi\n"
@@ -19,11 +19,11 @@ msgstr ""
 msgid "&Change Path"
 msgstr "&Đổi đường dẫn"
 
-#: utiles.py:293
+#: utiles.py:204
 msgid "1 month ago"
 msgstr "1 tháng trước"
 
-#: utiles.py:299
+#: utiles.py:208
 msgid "1 year ago"
 msgstr "1 năm trước"
 
@@ -35,7 +35,7 @@ msgstr "1. Cài đặt tiện ích 'Get cookies.txt LOCALLY' cho Chrome/Firefox.
 msgid "A YouTube {} link has been detected in the clipboard. Please select the desired action."
 msgstr "Đã phát hiện một liên kết {} YouTube trong bộ nhớ tạm. Vui lòng chọn hành động mong muốn."
 
-#: utiles.py:346
+#: utiles.py:247
 msgid "A new update is available. Do you want to download it now?"
 msgstr "Đã có bản cập nhật mới. Bạn có muốn tải xuống ngay không?"
 
@@ -43,7 +43,7 @@ msgstr "Đã có bản cập nhật mới. Bạn có muốn tải xuống ngay k
 msgid "A11YTube Starting"
 msgstr "A11YTube Đang khởi động"
 
-#: A11YTube.py:431
+#: A11YTube.py:434
 msgid "A11YTube User Guide"
 msgstr "Hướng dẫn sử dụng A11YTube"
 
@@ -52,11 +52,11 @@ msgstr "Hướng dẫn sử dụng A11YTube"
 msgid "A11YTube is starting..."
 msgstr "A11YTube đang khởi động..."
 
-#: A11YTube.py:454
+#: A11YTube.py:465
 msgid "About"
 msgstr "Giới thiệu"
 
-#: A11YTube.py:157
+#: A11YTube.py:158
 msgid "About..."
 msgstr "Giới thiệu..."
 
@@ -100,8 +100,8 @@ msgstr "Đã thêm {} video vào bộ sưu tập"
 msgid "Alert"
 msgstr "Cảnh báo"
 
-#: utiles.py:337
-#: utiles.py:357
+#: utiles.py:242
+#: utiles.py:257
 msgid "An error occurred while connecting to the update service. Please check your internet connection and try again."
 msgstr "Đã xảy ra lỗi khi kết nối với máy chủ cập nhật. Vui lòng kiểm tra kết nối mạng và thử lại."
 
@@ -119,7 +119,7 @@ msgstr "Đã xảy ra lỗi khi mở trình cài đặt. Vui lòng thử lại h
 msgid "An error occurred: {}"
 msgstr "Đã xảy ra lỗi: {}"
 
-#: A11YTube.py:481
+#: A11YTube.py:492
 msgid "Application is already running"
 msgstr "Ứng dụng đang chạy rồi"
 
@@ -176,16 +176,18 @@ msgstr "Bản âm thanh"
 msgid "Audio Tracks"
 msgstr "Các bản âm thanh"
 
-#: download_handler/downloader.py:194
-#: download_handler/downloader.py:223
+#: download_handler/downloader.py:135
 #: gui/activity_dialog.py:39
 msgid "Authentication Error"
 msgstr "Lỗi xác thực"
 
-#: utiles.py:172
-#: utiles.py:216
-#: download_handler/downloader.py:193
-#: download_handler/downloader.py:222
+#: utiles.py:75
+msgid "Authentication Error: "
+msgstr ""
+
+#: utiles.py:129
+#: utiles.py:146
+#: download_handler/downloader.py:134
 msgid "Authentication failed. Your cookies.txt might be expired or invalid. Please delete and re-import a fresh one."
 msgstr "Xác thực thất bại. Tệp cookies.txt của bạn có thể đã hết hạn hoặc không hợp lệ. Vui lòng xóa và nhập lại tệp mới."
 
@@ -252,13 +254,12 @@ msgstr "Đầu danh sách phát ngẫu nhiên"
 msgid "Beginning of video"
 msgstr "Đầu video"
 
-#: youtube_browser/search_handler.py:50
-#: youtube_browser/search_handler.py:186
-#: youtube_browser/search_handler.py:195
+#: youtube_browser/search_handler.py:41
+#: youtube_browser/search_handler.py:135
+#: youtube_browser/search_handler.py:141
 msgid "By"
 msgstr "Bởi"
 
-#: download_handler/downloader.py:37
 msgid "Bytes"
 msgstr "Bytes"
 
@@ -278,11 +279,11 @@ msgstr "Không thể cập nhật vào lúc này"
 msgid "Category"
 msgstr "Danh mục"
 
-#: A11YTube.py:439
+#: A11YTube.py:442
 msgid "Changelog"
 msgstr "Nhật ký thay đổi"
 
-#: A11YTube.py:156
+#: A11YTube.py:157
 msgid "Changelog (Ctrl+Shift+C)"
 msgstr "Nhật ký thay đổi (Ctrl+Shift+C)"
 
@@ -290,9 +291,13 @@ msgstr "Nhật ký thay đổi (Ctrl+Shift+C)"
 msgid "Check for updates (Ctrl+Shift+U)"
 msgstr "Kiểm tra cập nhật (Ctrl+Shift+U)"
 
-#: A11YTube.py:444
+#: A11YTube.py:455
 msgid "Checking for updates. Please wait"
 msgstr "Đang kiểm tra cập nhật. Vui lòng đợi"
+
+#: A11YTube.py:449
+msgid "Checking for yt-dlp updates. Please wait..."
+msgstr ""
 
 #: gui/collections.py:491
 msgid "Clear Collection"
@@ -370,7 +375,7 @@ msgstr "Bộ sưu tập (Ctrl+L)"
 msgid "Collections Manager"
 msgstr "Trình quản lý Bộ sưu tập"
 
-#: download_handler/downloader.py:199
+#: download_handler/downloader.py:139
 msgid "Completed with Errors"
 msgstr "Hoàn thành nhưng có lỗi"
 
@@ -473,16 +478,16 @@ msgstr "Xóa"
 msgid "Description (Ctrl+Shift+D)"
 msgstr "Mô tả (Ctrl+Shift+D)"
 
-#: youtube_browser/extras.py:41
+#: youtube_browser/extras.py:14
 msgid "Description not available."
 msgstr "Không có mô tả."
 
-#: A11YTube.py:453
+#: A11YTube.py:464
 #: gui/description.py:15
 msgid "Description: "
 msgstr "Mô tả: "
 
-#: A11YTube.py:452
+#: A11YTube.py:463
 msgid "Developed By"
 msgstr "Phát triển bởi"
 
@@ -590,11 +595,11 @@ msgstr "Tải xuống mục đã chọn"
 msgid "Download Video"
 msgstr "Tải xuống Video"
 
-#: download_handler/downloader.py:204
+#: download_handler/downloader.py:144
 msgid "Download completed successfully"
 msgstr "Tải xuống hoàn tất"
 
-#: download_handler/downloader.py:199
+#: download_handler/downloader.py:139
 msgid "Download completed, but {} videos failed to download."
 msgstr "Đã tải xong, nhưng {} video bị lỗi không tải được."
 
@@ -625,7 +630,10 @@ msgstr "Đã bắt đầu tải"
 msgid "Download {} videos?"
 msgstr "Tải xuống {} video?"
 
-#: download_handler/downloader.py:72
+#: download_handler/downloader.py:92
+msgid "Downloaded: {}"
+msgstr ""
+
 #: gui/download_progress.py:10
 msgid "Downloaded: {} {}"
 msgstr "Đã tải: {} {}"
@@ -643,7 +651,7 @@ msgid "Downloading update {}%"
 msgstr "Đang tải bản cập nhật {}%"
 
 #: A11YTube.py:33
-#: ytdlp_handler.py:53
+#: ytdlp_handler.py:67
 msgid "Downloading yt-dlp core..."
 msgstr ""
 
@@ -656,18 +664,22 @@ msgstr ""
 msgid "Downloading {} videos"
 msgstr "Đang tải {} video"
 
-#: youtube_browser/search_handler.py:50
-#: youtube_browser/search_handler.py:237
+#: youtube_browser/search_handler.py:41
+#: youtube_browser/search_handler.py:167
 #: media_player/media_gui.py:1007
 msgid "Duration: {}"
 msgstr "Thời lượng: {}"
+
+#: download_handler/downloader.py:93
+msgid "ETA: {}"
+msgstr ""
 
 #: media_player/media_gui.py:750
 #: media_player/media_gui.py:999
 msgid "Elapsed: {}"
 msgstr "Đã qua: {}"
 
-#: A11YTube.py:158
+#: A11YTube.py:159
 msgid "Email: trung@ddt.one"
 msgstr "Email: trung@ddt.one"
 
@@ -689,11 +701,11 @@ msgstr "Nhập tên mới cho '{}':"
 msgid "Enter video link to play"
 msgstr "Dán liên kết video để phát"
 
-#: A11YTube.py:436
-#: utiles.py:338
-#: utiles.py:358
-#: download_handler/downloader.py:230
-#: download_handler/downloader.py:236
+#: A11YTube.py:439
+#: utiles.py:242
+#: utiles.py:257
+#: ytdlp_handler.py:62
+#: ytdlp_handler.py:60
 #: youtube_browser/browser.py:482
 #: youtube_browser/browser.py:574
 #: youtube_browser/browser.py:594
@@ -728,8 +740,8 @@ msgstr "Lỗi khi sao chép danh sách phát"
 msgid "Error exporting collection: {}"
 msgstr "Lỗi khi xuất bộ sưu tập: {}"
 
-#: youtube_browser/extras.py:68
-#: youtube_browser/extras.py:65
+#: youtube_browser/extras.py:34
+#: youtube_browser/extras.py:32
 msgid "Error fetching description: {}"
 msgstr "Lỗi khi lấy mô tả: {}"
 
@@ -779,6 +791,10 @@ msgstr "Nhập cookies thất bại: {}"
 msgid "Failed to initialize media player. Please check your settings or installation."
 msgstr "Khởi tạo trình phát thất bại. Vui lòng kiểm tra cài đặt hoặc bản cài đặt."
 
+#: ytdlp_handler.py:60
+msgid "Failed to update yt-dlp: {}"
+msgstr ""
+
 #: media_player/media_gui.py:669
 #: media_player/media_gui.py:950
 msgid "Fast"
@@ -800,7 +816,7 @@ msgstr "Đã xóa sạch mục yêu thích"
 msgid "Favorites: "
 msgstr "Yêu thích: "
 
-#: A11YTube.py:406
+#: A11YTube.py:409
 msgid "Feature Disabled"
 msgstr "Tính năng đã bị tắt"
 
@@ -844,7 +860,6 @@ msgstr "Tắt toàn màn hình"
 msgid "Full screen on"
 msgstr "Bật toàn màn hình"
 
-#: download_handler/downloader.py:43
 msgid "GB"
 msgstr "GB"
 
@@ -860,11 +875,11 @@ msgstr "Đi tới Kênh"
 msgid "Going back to"
 msgstr "Quay lại"
 
-#: A11YTube.py:164
+#: A11YTube.py:165
 msgid "Help"
 msgstr "Trợ giúp"
 
-#: A11YTube.py:252
+#: A11YTube.py:253
 msgid "Help Options"
 msgstr "Tùy chọn Trợ giúp"
 
@@ -872,11 +887,11 @@ msgstr "Tùy chọn Trợ giúp"
 msgid "History cleared"
 msgstr "Đã xóa sạch lịch sử"
 
-#: A11YTube.py:164
+#: A11YTube.py:165
 msgid "Home"
 msgstr "Trang chủ"
 
-#: A11YTube.py:246
+#: A11YTube.py:247
 msgid "Home Options"
 msgstr "Tùy chọn Trang chủ"
 
@@ -922,11 +937,9 @@ msgstr "Đang cài đặt cập nhật"
 msgid "Instructions"
 msgstr "Hướng dẫn"
 
-#: download_handler/downloader.py:230
 msgid "Invalid link. Please try another link, or check your internet connection."
 msgstr "Liên kết không hợp lệ. Vui lòng thử liên kết khác, hoặc kiểm tra kết nối mạng."
 
-#: download_handler/downloader.py:39
 msgid "KB"
 msgstr "KB"
 
@@ -938,7 +951,7 @@ msgstr "KB"
 msgid "Link copied successfully"
 msgstr "Sao chép liên kết thành công"
 
-#: youtube_browser/search_handler.py:231
+#: youtube_browser/search_handler.py:162
 msgid "Live"
 msgstr "Trực tiếp"
 
@@ -992,7 +1005,6 @@ msgstr "Đang tải danh sách để phát ngẫu nhiên..."
 msgid "Loading..."
 msgstr "Đang tải..."
 
-#: download_handler/downloader.py:41
 msgid "MB"
 msgstr "MB"
 
@@ -1041,7 +1053,7 @@ msgstr "Đã tải thêm kết quả tìm kiếm"
 msgid "More videos loaded"
 msgstr "Đã tải thêm video"
 
-#: A11YTube.py:165
+#: A11YTube.py:166
 msgid "Navigation"
 msgstr "Điều hướng"
 
@@ -1051,7 +1063,7 @@ msgstr "Điều hướng"
 msgid "New Collection"
 msgstr "Bộ sưu tập mới"
 
-#: utiles.py:346
+#: utiles.py:247
 msgid "New Update"
 msgstr "Cập nhật mới"
 
@@ -1063,11 +1075,11 @@ msgstr "Video tiếp theo"
 msgid "No Filter"
 msgstr "Không lọc"
 
-#: utiles.py:353
+#: utiles.py:254
 msgid "No Update"
 msgstr "Không có cập nhật"
 
-#: A11YTube.py:436
+#: A11YTube.py:439
 msgid "No changelog available."
 msgstr "Không có nhật ký thay đổi."
 
@@ -1084,7 +1096,7 @@ msgstr "Không tìm thấy bộ sưu tập nào. Vui lòng tạo một cái trư
 msgid "No cookies found to delete."
 msgstr "Không tìm thấy cookies nào để xóa."
 
-#: youtube_browser/extras.py:43
+#: youtube_browser/extras.py:16
 msgid "No description available."
 msgstr "Không có mô tả."
 
@@ -1169,13 +1181,13 @@ msgstr "Mở..."
 msgid "Opening"
 msgstr "Đang mở"
 
-#: A11YTube.py:169
+#: A11YTube.py:170
 #: youtube_browser/browser.py:88
 #: media_player/media_gui.py:293
 msgid "Options"
 msgstr "Tùy chọn"
 
-#: A11YTube.py:170
+#: A11YTube.py:171
 msgid "Options List"
 msgstr "Danh sách tùy chọn"
 
@@ -1190,7 +1202,7 @@ msgstr "Tạm dừng"
 msgid "Paused"
 msgstr "Đã tạm dừng"
 
-#: download_handler/downloader.py:72
+#: download_handler/downloader.py:90
 #: gui/download_progress.py:10
 msgid "Percentage: {}%"
 msgstr "Tiến độ: {}%"
@@ -1261,7 +1273,7 @@ msgstr "Trình phát"
 msgid "Player Controls"
 msgstr "Điều khiển trình phát"
 
-#: A11YTube.py:378
+#: A11YTube.py:381
 #: youtube_browser/browser.py:158
 #: youtube_browser/browser.py:170
 #: gui/favorites.py:111
@@ -1279,7 +1291,7 @@ msgstr "Đang phát"
 msgid "Playing suggested video"
 msgstr "Đang phát video đề xuất"
 
-#: youtube_browser/search_handler.py:192
+#: youtube_browser/search_handler.py:140
 #: gui/search_dialog.py:27
 msgid "Playlist"
 msgstr "Danh sách phát"
@@ -1312,7 +1324,7 @@ msgstr "Video trước đó"
 msgid "Program Language: "
 msgstr "Ngôn ngữ chương trình: "
 
-#: A11YTube.py:450
+#: A11YTube.py:461
 msgid "Program Name"
 msgstr "Tên chương trình"
 
@@ -1320,7 +1332,6 @@ msgstr "Tên chương trình"
 msgid "Ready"
 msgstr "Sẵn sàng"
 
-#: download_handler/downloader.py:72
 #: gui/download_progress.py:10
 msgid "Remaining: {} {}"
 msgstr "Còn lại: {} {}"
@@ -1545,7 +1556,10 @@ msgstr "Đọc thông báo trạng thái trình phát"
 msgid "Speed"
 msgstr "Tốc độ"
 
-#: download_handler/downloader.py:72
+#: download_handler/downloader.py:94
+msgid "Speed: {}"
+msgstr ""
+
 #: gui/download_progress.py:10
 msgid "Speed: {} {}"
 msgstr "Tốc độ: {} {}"
@@ -1554,7 +1568,7 @@ msgstr "Tốc độ: {} {}"
 msgid "Stop Download"
 msgstr "Dừng tải"
 
-#: download_handler/downloader.py:204
+#: download_handler/downloader.py:144
 #: gui/settings_dialog.py:355
 #: gui/settings_dialog.py:386
 #: gui/settings_dialog.py:368
@@ -1576,11 +1590,10 @@ msgstr "Đổi hành động phím Enter và Ctrl+Enter cho Video/Âm thanh"
 msgid "Switched to"
 msgstr "Đã chuyển sang"
 
-#: download_handler/downloader.py:45
 msgid "TB"
 msgstr "TB"
 
-#: A11YTube.py:406
+#: A11YTube.py:409
 msgid "This feature is disabled because 'Continue watching' is turned off in Settings."
 msgstr "Tính năng này bị vô hiệu hóa vì 'Tiếp tục xem' đang tắt trong Cài đặt."
 
@@ -1588,12 +1601,10 @@ msgstr "Tính năng này bị vô hiệu hóa vì 'Tiếp tục xem' đang tắt
 msgid "This program aims to provide the easiest way for blind users to browse and download from YouTube hosting service."
 msgstr "Chương trình này nhằm mục đích cung cấp cách dễ dàng nhất cho người mù duyệt và tải xuống từ dịch vụ lưu trữ YouTube."
 
-#: utiles.py:159
-#: utiles.py:204
-#: download_handler/downloader.py:191
-#: download_handler/downloader.py:220
-#: youtube_browser/extras.py:34
-#: youtube_browser/extras.py:64
+#: utiles.py:125
+#: utiles.py:142
+#: download_handler/downloader.py:132
+#: youtube_browser/extras.py:30
 msgid "This video is age restricted or requires a valid cookies.txt file to play."
 msgstr "Video này bị giới hạn độ tuổi hoặc yêu cầu tệp cookies.txt hợp lệ để phát."
 
@@ -1613,7 +1624,7 @@ msgstr "Thời gian"
 msgid "To fix login errors, please manually import cookies.txt from your browser."
 msgstr "Để sửa lỗi đăng nhập, vui lòng nhập thủ công cookies.txt từ trình duyệt của bạn."
 
-#: utiles.py:285
+#: utiles.py:199
 msgid "Today"
 msgstr "Hôm nay"
 
@@ -1621,15 +1632,18 @@ msgstr "Hôm nay"
 msgid "Toggle Favorite\tCtrl+F"
 msgstr "Bật/Tắt Yêu thích\tCtrl+F"
 
-#: A11YTube.py:164
+#: A11YTube.py:165
 msgid "Tools"
 msgstr "Công cụ"
 
-#: A11YTube.py:249
+#: A11YTube.py:250
 msgid "Tools Options"
 msgstr "Tùy chọn Công cụ"
 
-#: download_handler/downloader.py:72
+#: download_handler/downloader.py:91
+msgid "Total Size: {}"
+msgstr ""
+
 #: gui/download_progress.py:10
 msgid "Total Size: {} {}"
 msgstr "Tổng kích thước: {} {}"
@@ -1642,37 +1656,37 @@ msgstr "Không thể thêm vào yêu thích"
 msgid "Unable to play next: {}"
 msgstr "Không thể phát tiếp: {}"
 
-#: youtube_browser/search_handler.py:154
+#: youtube_browser/search_handler.py:110
 #: media_player/media_gui.py:2046
 #: media_player/media_gui.py:2052
 msgid "Unknown"
 msgstr "Không xác định"
 
-#: utiles.py:553
-#: utiles.py:482
-#: utiles.py:662
-#: youtube_browser/extras.py:47
-#: youtube_browser/search_handler.py:30
+#: utiles.py:317
+#: utiles.py:350
+#: utiles.py:393
+#: youtube_browser/extras.py:20
+#: youtube_browser/search_handler.py:23
 #: youtube_browser/browser.py:322
 #: gui/collections.py:662
 msgid "Unknown Channel"
 msgstr "Kênh không xác định"
 
-#: youtube_browser/search_handler.py:21
+#: youtube_browser/search_handler.py:14
 msgid "Unknown Playlist"
 msgstr "Danh sách phát không xác định"
 
-#: utiles.py:550
-#: utiles.py:551
-#: utiles.py:479
-#: utiles.py:480
-#: utiles.py:659
-#: utiles.py:660
-#: youtube_browser/search_handler.py:26
+#: utiles.py:314
+#: utiles.py:315
+#: utiles.py:347
+#: utiles.py:348
+#: utiles.py:390
+#: utiles.py:391
+#: youtube_browser/search_handler.py:19
 msgid "Unknown Title"
 msgstr "Tiêu đề không xác định"
 
-#: youtube_browser/extras.py:44
+#: youtube_browser/extras.py:17
 msgid "Unknown Video"
 msgstr "Video không xác định"
 
@@ -1680,11 +1694,15 @@ msgstr "Video không xác định"
 msgid "Update downloaded successfully. Press OK to start installation."
 msgstr "Đã tải bản cập nhật thành công. Nhấn OK để bắt đầu cài đặt."
 
-#: A11YTube.py:155
+#: A11YTube.py:153
+msgid "Update yt-dlp core"
+msgstr ""
+
+#: A11YTube.py:156
 msgid "User Guide (F1)"
 msgstr "Hướng dẫn sử dụng (F1)"
 
-#: A11YTube.py:451
+#: A11YTube.py:462
 msgid "Version"
 msgstr "Phiên bản"
 
@@ -1769,19 +1787,19 @@ msgstr "Lịch sử xem (Ctrl+H)"
 msgid "Watch History: "
 msgstr "Lịch sử xem: "
 
-#: A11YTube.py:159
+#: A11YTube.py:160
 msgid "Website: https://ddt.one"
 msgstr "Trang web: https://ddt.one"
 
-#: A11YTube.py:228
+#: A11YTube.py:229
 msgid "Welcome to A11YTube"
 msgstr "Chào mừng đến với A11YTube"
 
-#: utiles.py:287
+#: utiles.py:200
 msgid "Yesterday"
 msgstr "Hôm qua"
 
-#: utiles.py:353
+#: utiles.py:254
 msgid "You are running the latest version."
 msgstr "Bạn đang dùng phiên bản mới nhất."
 
@@ -1799,15 +1817,15 @@ msgstr "Bộ sưu tập của bạn:"
 msgid "channel"
 msgstr "kênh"
 
-#: utiles.py:245
+#: utiles.py:171
 msgid "one hour"
 msgstr "một giờ"
 
-#: utiles.py:231
+#: utiles.py:163
 msgid "one minute"
 msgstr "một phút"
 
-#: utiles.py:238
+#: utiles.py:167
 msgid "one second"
 msgstr "một giây"
 
@@ -1822,15 +1840,15 @@ msgstr "danh sách phát"
 msgid "seconds"
 msgstr "giây"
 
-#: utiles.py:247
+#: utiles.py:172
 msgid "two hours"
 msgstr "hai giờ"
 
-#: utiles.py:233
+#: utiles.py:164
 msgid "two minutes"
 msgstr "hai phút"
 
-#: utiles.py:240
+#: utiles.py:168
 msgid "two seconds"
 msgstr "hai giây"
 
@@ -1844,38 +1862,54 @@ msgstr "video"
 msgid "videos"
 msgstr "video"
 
-#: utiles.py:262
+#: ytdlp_handler.py:58
+msgid "yt-dlp Update"
+msgstr ""
+
+#: utiles.py:76
+msgid "yt-dlp error: "
+msgstr ""
+
+#: ytdlp_handler.py:62
+msgid "yt-dlp is not installed."
+msgstr ""
+
+#: ytdlp_handler.py:58
+msgid "yt-dlp updated successfully."
+msgstr ""
+
+#: utiles.py:181
 msgid "{} and {}"
 msgstr "{} và {}"
 
-#: utiles.py:264
+#: utiles.py:182
 msgid "{} and {} and {}"
 msgstr "{} và {} và {}"
 
-#: utiles.py:289
+#: utiles.py:201
 msgid "{} days ago"
 msgstr "{} ngày trước"
 
-#: utiles.py:249
+#: utiles.py:173
 msgid "{} hours"
 msgstr "{} giờ"
 
-#: utiles.py:235
+#: utiles.py:165
 msgid "{} minutes"
 msgstr "{} phút"
 
-#: utiles.py:295
+#: utiles.py:205
 msgid "{} months ago"
 msgstr "{} tháng trước"
 
-#: utiles.py:242
+#: utiles.py:169
 msgid "{} seconds"
 msgstr "{} giây"
 
-#: youtube_browser/search_handler.py:229
+#: youtube_browser/search_handler.py:162
 msgid "{} views"
 msgstr "{} lượt xem"
 
-#: utiles.py:301
+#: utiles.py:209
 msgid "{} years ago"
 msgstr "{} năm trước"

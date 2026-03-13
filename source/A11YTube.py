@@ -149,7 +149,8 @@ class HomeScreen(wx.Frame):
 		]
 		self.toolsOptions = [
 			_("Settings (Ctrl+Shift+S)"),
-			_("Check for updates (Ctrl+Shift+U)")
+			_("Check for updates (Ctrl+Shift+U)"),
+			_("Update yt-dlp core")
 		]
 		self.helpOptions = [
 			_("User Guide (F1)"),
@@ -284,6 +285,8 @@ class HomeScreen(wx.Frame):
 			SettingsDialog(self)
 		elif index == 1:
 			self.onCheckForUpdates(None)
+		elif index == 2:
+			self.onUpdateYtDlp(None)
 
 	def executeHelpAction(self, index):
 		if index == 0: self.onGuide(None)
@@ -437,6 +440,14 @@ class HomeScreen(wx.Frame):
 			return
 		from gui.text_viewer import Viewer
 		Viewer(self, _("Changelog"), content).ShowModal()
+
+	def onUpdateYtDlp(self, event):
+		from gui.activity_dialog import LoadingDialog
+		import ytdlp_handler
+		def up():
+			ytdlp_handler.manual_update_ytdlp(self)
+		LoadingDialog(self, _("Checking for yt-dlp updates. Please wait..."), up)
+		self.navBox.SetFocus()
 
 	def onCheckForUpdates(self, event):
 		from gui.activity_dialog import LoadingDialog
