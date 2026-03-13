@@ -3,7 +3,6 @@ import json
 import subprocess
 from threading import Thread
 from settings_handler import config_get, config_set
-from download_handler.downloader import downloadAction
 
 import wx
 import application
@@ -216,6 +215,7 @@ def youtube_regexp(string):
 	return YT_LINK_PATTERN.search(string)
 
 def direct_download(option, url, dlg, download_type="video", path=config_get("path")):
+	from download_handler.downloader import downloadAction
 	if option == 0:
 		format = "bestvideo+bestaudio/best"
 		convert = False
