@@ -26,6 +26,17 @@ import time
 
 def preload_modules(splash=None):
 	try:
+		if splash: wx.CallAfter(splash.update_progress, 5, _("Initializing yt-dlp..."))
+		import ytdlp_handler
+
+		if not ytdlp_handler.is_ytdlp_downloaded():
+			if splash: wx.CallAfter(splash.update_progress, 10, _("Downloading yt-dlp core..."))
+			def progress_cb(pct):
+				if splash: wx.CallAfter(splash.update_progress, 10 + int(pct*0.2), _("Downloading yt-dlp core: {}%").format(pct))
+			ytdlp_handler.download_ytdlp(progress_cb)
+
+		ytdlp_handler.update_ytdlp_background()
+
 		if splash: wx.CallAfter(splash.update_progress, 15, _("Loading media player..."))
 		import media_player.media_gui
 		
