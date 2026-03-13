@@ -1644,7 +1644,35 @@ class MediaGui(wx.Frame):
 				self.speak_status(_("Playing suggested video") + ": " + item['title'])
 				self.changeTrack(item)
 			else:
-				self.speak_status(_("End of suggestions."))
+				# We exhausted the current pool. Fetch new suggestions based on the currently playing video!
+				self.speak_status(_("Fetching more suggested videos..."))
+
+				def fetch_and_play():
+					from utiles import get_related_videos
+					self.fetching_related = True
+					try:
+						new_suggestions = get_related_videos(self.url)
+						if new_suggestions:
+							# Merge new suggestions, avoiding exact duplicates
+							existing_urls = {v.get('url') for v in self.related_videos}
+							filtered_new = [v for v in new_suggestions if v.get('url') not in existing_urls]
+
+							if filtered_new:
+								self.related_videos.extend(filtered_new)
+								wx.CallAfter(self.next, auto=auto)
+							else:
+								wx.CallAfter(self.speak_status, _("End of suggestions."))
+						else:
+							wx.CallAfter(self.speak_status, _("End of suggestions."))
+					except Exception:
+						wx.CallAfter(self.speak_status, _("End of suggestions."))
+					finally:
+						self.fetching_related = False
+
+				from threading import Thread
+				t = Thread(target=fetch_and_play)
+				t.daemon = True
+				t.start()
 			return
 
 		if self.results is None:

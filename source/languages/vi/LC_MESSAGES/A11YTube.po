@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: A11YTube 0.2.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-13 18:07+0000\n"
-"PO-Revision-Date: 2026-03-13 18:07+0000\n"
+"POT-Creation-Date: 2026-03-13 18:34+0000\n"
+"PO-Revision-Date: 2026-03-13 18:34+0000\n"
 "Last-Translator: Full Name <email@example.com>\n"
 "Language-Team: \n"
 "Language: vi\n"
@@ -105,7 +105,7 @@ msgstr "Cảnh báo"
 msgid "An error occurred while connecting to the update service. Please check your internet connection and try again."
 msgstr "Đã xảy ra lỗi khi kết nối với máy chủ cập nhật. Vui lòng kiểm tra kết nối mạng và thử lại."
 
-#: media_player/media_gui.py:2025
+#: media_player/media_gui.py:2053
 msgid "An error occurred while fetching video description"
 msgstr "Đã xảy ra lỗi khi tải mô tả video"
 
@@ -172,7 +172,7 @@ msgstr "Thiết bị đầu ra âm thanh: "
 msgid "Audio Track"
 msgstr "Bản âm thanh"
 
-#: media_player/media_gui.py:1813
+#: media_player/media_gui.py:1841
 msgid "Audio Tracks"
 msgstr "Các bản âm thanh"
 
@@ -246,7 +246,7 @@ msgstr "Sao lưu hoặc Khôi phục cấu hình của bạn."
 msgid "Beginning of Video"
 msgstr "Đầu video"
 
-#: media_player/media_gui.py:1775
+#: media_player/media_gui.py:1803
 msgid "Beginning of shuffle list"
 msgstr "Đầu danh sách phát ngẫu nhiên"
 
@@ -465,7 +465,7 @@ msgstr "Đã tạo"
 msgid "Data"
 msgstr "Dữ liệu"
 
-#: media_player/media_gui.py:1810
+#: media_player/media_gui.py:1838
 msgid "Default"
 msgstr "Mặc định"
 
@@ -511,7 +511,7 @@ msgid "Direct download format: "
 msgstr "Định dạng tải trực tiếp: "
 
 #: youtube_browser/browser.py:386
-#: media_player/media_gui.py:1779
+#: media_player/media_gui.py:1807
 #: gui/favorites.py:195
 #: gui/playlist_dialog.py:147
 #: gui/history.py:192
@@ -651,7 +651,7 @@ msgid "Downloading update {}%"
 msgstr "Đang tải bản cập nhật {}%"
 
 #: A11YTube.py:33
-#: ytdlp_handler.py:67
+#: ytdlp_handler.py:68
 msgid "Downloading yt-dlp core..."
 msgstr ""
 
@@ -683,7 +683,9 @@ msgstr "Đã qua: {}"
 msgid "Email: trung@ddt.one"
 msgstr "Email: trung@ddt.one"
 
-#: media_player/media_gui.py:1647
+#: media_player/media_gui.py:1666
+#: media_player/media_gui.py:1668
+#: media_player/media_gui.py:1664
 msgid "End of suggestions."
 msgstr "Hết gợi ý."
 
@@ -820,15 +822,19 @@ msgstr "Yêu thích: "
 msgid "Feature Disabled"
 msgstr "Tính năng đã bị tắt"
 
-#: media_player/media_gui.py:1795
+#: media_player/media_gui.py:1823
 msgid "Fetching audio tracks, please wait..."
 msgstr "Đang tải các bản âm thanh, vui lòng đợi..."
+
+#: media_player/media_gui.py:1648
+msgid "Fetching more suggested videos..."
+msgstr ""
 
 #: media_player/media_gui.py:1592
 msgid "Fetching suggested videos, please wait..."
 msgstr "Đang tìm video đề xuất, vui lòng đợi..."
 
-#: media_player/media_gui.py:2021
+#: media_player/media_gui.py:2049
 msgid "Fetching video description"
 msgstr "Đang tải mô tả video"
 
@@ -871,7 +877,7 @@ msgstr "GB"
 msgid "Go to Channel"
 msgstr "Đi tới Kênh"
 
-#: media_player/media_gui.py:1739
+#: media_player/media_gui.py:1767
 msgid "Going back to"
 msgstr "Quay lại"
 
@@ -919,7 +925,7 @@ msgstr "Nhập..."
 msgid "Imported {} videos into '{}'"
 msgstr "Đã nhập {} video vào '{}'"
 
-#: media_player/media_gui.py:1805
+#: media_player/media_gui.py:1833
 #: gui/settings_dialog.py:372
 #: gui/collections.py:428
 msgid "Info"
@@ -944,7 +950,7 @@ msgid "KB"
 msgstr "KB"
 
 #: youtube_browser/browser.py:386
-#: media_player/media_gui.py:1779
+#: media_player/media_gui.py:1807
 #: gui/favorites.py:195
 #: gui/playlist_dialog.py:147
 #: gui/history.py:192
@@ -1100,12 +1106,12 @@ msgstr "Không tìm thấy cookies nào để xóa."
 msgid "No description available."
 msgstr "Không có mô tả."
 
-#: media_player/media_gui.py:1696
+#: media_player/media_gui.py:1724
 #: gui/playlist_dialog.py:203
 msgid "No more videos"
 msgstr "Không còn video nào"
 
-#: media_player/media_gui.py:1805
+#: media_player/media_gui.py:1833
 msgid "No other audio tracks available."
 msgstr "Không có bản âm thanh nào khác."
 
@@ -1113,11 +1119,11 @@ msgstr "Không có bản âm thanh nào khác."
 msgid "No other collections to merge into."
 msgstr "Không có bộ sưu tập nào khác để gộp vào."
 
-#: media_player/media_gui.py:1766
+#: media_player/media_gui.py:1794
 msgid "No previous video"
 msgstr "Không có video trước đó"
 
-#: media_player/media_gui.py:1742
+#: media_player/media_gui.py:1770
 msgid "No previous video."
 msgstr "Không có video trước đó."
 
@@ -1177,7 +1183,7 @@ msgstr "Mở trong trình duyệt web"
 msgid "Open..."
 msgstr "Mở..."
 
-#: media_player/media_gui.py:1782
+#: media_player/media_gui.py:1810
 msgid "Opening"
 msgstr "Đang mở"
 
@@ -1394,7 +1400,7 @@ msgstr "Bật lặp lại"
 msgid "Repeat video"
 msgstr "Lặp lại video"
 
-#: media_player/media_gui.py:1705
+#: media_player/media_gui.py:1733
 msgid "Reshuffling..."
 msgstr "Đang xáo trộn lại..."
 
@@ -1465,7 +1471,7 @@ msgstr "Tua"
 msgid "Seek & Volume"
 msgstr "Tua & Âm lượng"
 
-#: media_player/media_gui.py:1813
+#: media_player/media_gui.py:1841
 msgid "Select Audio Track"
 msgstr "Chọn bản âm thanh"
 
@@ -1586,7 +1592,7 @@ msgstr "Video đề xuất"
 msgid "Swap Enter and Ctrl+Enter for Video/Audio"
 msgstr "Đổi hành động phím Enter và Ctrl+Enter cho Video/Âm thanh"
 
-#: media_player/media_gui.py:1844
+#: media_player/media_gui.py:1872
 msgid "Switched to"
 msgstr "Đã chuyển sang"
 
@@ -1657,8 +1663,8 @@ msgid "Unable to play next: {}"
 msgstr "Không thể phát tiếp: {}"
 
 #: youtube_browser/search_handler.py:110
-#: media_player/media_gui.py:2046
-#: media_player/media_gui.py:2052
+#: media_player/media_gui.py:2074
+#: media_player/media_gui.py:2080
 msgid "Unknown"
 msgstr "Không xác định"
 

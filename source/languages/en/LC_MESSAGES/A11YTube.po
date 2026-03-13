@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: A11YTube 0.2.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-13 18:07+0000\n"
+"POT-Creation-Date: 2026-03-13 18:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,7 +107,7 @@ msgstr ""
 msgid "An error occurred while connecting to the update service. Please check your internet connection and try again."
 msgstr ""
 
-#: media_player/media_gui.py:2025
+#: media_player/media_gui.py:2053
 msgid "An error occurred while fetching video description"
 msgstr ""
 
@@ -174,7 +174,7 @@ msgstr ""
 msgid "Audio Track"
 msgstr ""
 
-#: media_player/media_gui.py:1813
+#: media_player/media_gui.py:1841
 msgid "Audio Tracks"
 msgstr ""
 
@@ -248,7 +248,7 @@ msgstr ""
 msgid "Beginning of Video"
 msgstr ""
 
-#: media_player/media_gui.py:1775
+#: media_player/media_gui.py:1803
 msgid "Beginning of shuffle list"
 msgstr ""
 
@@ -464,7 +464,7 @@ msgstr ""
 msgid "Data"
 msgstr ""
 
-#: media_player/media_gui.py:1810
+#: media_player/media_gui.py:1838
 msgid "Default"
 msgstr ""
 
@@ -510,7 +510,7 @@ msgid "Direct download format: "
 msgstr ""
 
 #: youtube_browser/browser.py:386
-#: media_player/media_gui.py:1779
+#: media_player/media_gui.py:1807
 #: gui/favorites.py:195
 #: gui/playlist_dialog.py:147
 #: gui/history.py:192
@@ -650,7 +650,7 @@ msgid "Downloading update {}%"
 msgstr ""
 
 #: A11YTube.py:33
-#: ytdlp_handler.py:67
+#: ytdlp_handler.py:68
 msgid "Downloading yt-dlp core..."
 msgstr ""
 
@@ -682,7 +682,9 @@ msgstr ""
 msgid "Email: trung@ddt.one"
 msgstr ""
 
-#: media_player/media_gui.py:1647
+#: media_player/media_gui.py:1666
+#: media_player/media_gui.py:1668
+#: media_player/media_gui.py:1664
 msgid "End of suggestions."
 msgstr ""
 
@@ -819,15 +821,19 @@ msgstr ""
 msgid "Feature Disabled"
 msgstr ""
 
-#: media_player/media_gui.py:1795
+#: media_player/media_gui.py:1823
 msgid "Fetching audio tracks, please wait..."
+msgstr ""
+
+#: media_player/media_gui.py:1648
+msgid "Fetching more suggested videos..."
 msgstr ""
 
 #: media_player/media_gui.py:1592
 msgid "Fetching suggested videos, please wait..."
 msgstr ""
 
-#: media_player/media_gui.py:2021
+#: media_player/media_gui.py:2049
 msgid "Fetching video description"
 msgstr ""
 
@@ -867,7 +873,7 @@ msgstr ""
 msgid "Go to Channel"
 msgstr ""
 
-#: media_player/media_gui.py:1739
+#: media_player/media_gui.py:1767
 msgid "Going back to"
 msgstr ""
 
@@ -915,7 +921,7 @@ msgstr ""
 msgid "Imported {} videos into '{}'"
 msgstr ""
 
-#: media_player/media_gui.py:1805
+#: media_player/media_gui.py:1833
 #: gui/settings_dialog.py:372
 #: gui/collections.py:428
 msgid "Info"
@@ -934,7 +940,7 @@ msgid "Instructions"
 msgstr ""
 
 #: youtube_browser/browser.py:386
-#: media_player/media_gui.py:1779
+#: media_player/media_gui.py:1807
 #: gui/favorites.py:195
 #: gui/playlist_dialog.py:147
 #: gui/history.py:192
@@ -1087,12 +1093,12 @@ msgstr ""
 msgid "No description available."
 msgstr ""
 
-#: media_player/media_gui.py:1696
+#: media_player/media_gui.py:1724
 #: gui/playlist_dialog.py:203
 msgid "No more videos"
 msgstr ""
 
-#: media_player/media_gui.py:1805
+#: media_player/media_gui.py:1833
 msgid "No other audio tracks available."
 msgstr ""
 
@@ -1100,11 +1106,11 @@ msgstr ""
 msgid "No other collections to merge into."
 msgstr ""
 
-#: media_player/media_gui.py:1766
+#: media_player/media_gui.py:1794
 msgid "No previous video"
 msgstr ""
 
-#: media_player/media_gui.py:1742
+#: media_player/media_gui.py:1770
 msgid "No previous video."
 msgstr ""
 
@@ -1164,7 +1170,7 @@ msgstr ""
 msgid "Open..."
 msgstr ""
 
-#: media_player/media_gui.py:1782
+#: media_player/media_gui.py:1810
 msgid "Opening"
 msgstr ""
 
@@ -1381,7 +1387,7 @@ msgstr ""
 msgid "Repeat video"
 msgstr ""
 
-#: media_player/media_gui.py:1705
+#: media_player/media_gui.py:1733
 msgid "Reshuffling..."
 msgstr ""
 
@@ -1452,7 +1458,7 @@ msgstr ""
 msgid "Seek & Volume"
 msgstr ""
 
-#: media_player/media_gui.py:1813
+#: media_player/media_gui.py:1841
 msgid "Select Audio Track"
 msgstr ""
 
@@ -1573,7 +1579,7 @@ msgstr ""
 msgid "Swap Enter and Ctrl+Enter for Video/Audio"
 msgstr ""
 
-#: media_player/media_gui.py:1844
+#: media_player/media_gui.py:1872
 msgid "Switched to"
 msgstr ""
 
@@ -1641,8 +1647,8 @@ msgid "Unable to play next: {}"
 msgstr ""
 
 #: youtube_browser/search_handler.py:110
-#: media_player/media_gui.py:2046
-#: media_player/media_gui.py:2052
+#: media_player/media_gui.py:2074
+#: media_player/media_gui.py:2080
 msgid "Unknown"
 msgstr ""
 

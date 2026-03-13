@@ -306,7 +306,7 @@ def get_youtube_mix(video_id):
 	mix_url = f"https://www.youtube.com/watch?v={video_id}&list=RD{video_id}"
 	results = []
 	try:
-		info = run_ytdlp_json(mix_url, extract_flat=True, cookies=True, extra_args=['--playlist-end', '20'])
+		info = run_ytdlp_json(mix_url, extract_flat=True, cookies=True, extra_args=['--playlist-end', '50'])
 		entries = info.get('entries', [])
 		for vid in entries:
 			if vid.get('id') == video_id: continue
@@ -378,7 +378,7 @@ def get_related_videos(url):
 		else: query = f"{current_title} mix"
 		
 		try:
-			info = run_ytdlp_json(f"ytsearch20:{query}", extract_flat=True, cookies=True)
+			info = run_ytdlp_json(f"ytsearch50:{query}", extract_flat=True, cookies=True)
 			entries = info.get('entries', [])
 			for vid in entries:
 				if current_id and vid.get('id') == current_id: continue
