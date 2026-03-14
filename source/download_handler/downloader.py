@@ -5,6 +5,23 @@ import re
 from settings_handler import config_get
 from utiles import run_ytdlp_json, get_cookie_opts_args, get_ffmpeg_path
 
+def parse_progress_line(line):
+	pct = total = speed = eta = None
+	m1 = re.search(r'\[download\]\s+([0-9\.]+)\%\s+of[ ~]+([a-zA-Z0-9\.\s]+?)\s+at\s+([a-zA-Z0-9\.\s]+?)\/s\s+ETA\s+([0-9:]+|Unknown)', line)
+	if m1:
+		pct, total, speed, eta = m1.groups()
+	else:
+		m2 = re.search(r'\[download\]\s+([0-9\.]+)\%\s+of[ ~]+([a-zA-Z0-9\.\s]+?)\s+in\s+([0-9:]+)\s+at\s+([a-zA-Z0-9\.\s]+?)\/s', line)
+		if m2:
+			pct, total, eta, speed = m2.groups()
+			eta = "00:00"
+		else:
+			m3 = re.search(r'\[download\]\s+([0-9\.]+)\%\s+of[ ~]+([a-zA-Z0-9\.]+)', line)
+			if m3:
+				pct, total = m3.groups()
+				speed, eta = "Unknown", "Unknown"
+	return pct, total, speed, eta
+
 class Downloader:
 	def __init__(self, url, path, downloading_format, monitor, monitor1, convert=False, folder=False, use_cookies=False, noplaylist=True):
 		self.url = url
@@ -72,26 +89,23 @@ class Downloader:
 
 		self.process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, **kwargs)
 
-		prog_regex = re.compile(r'\[download\]\s+([0-9\.]+)\%\s+of\s+([~0-9\.\w\s]+?)\s+at\s+([0-9\.\w\s]+?)\/s\s+ETA\s+([0-9:]+|Unknown)')
 		err_regex = re.compile(r'ERROR:\s+(.*)')
 
 		for line in iter(self.process.stdout.readline, ''):
 			line = line.strip()
 			if not line: continue
 
-			m = prog_regex.search(line)
-			if m:
-				pct = float(m.group(1))
-				total = m.group(2)
-				speed = m.group(3)
-				eta = m.group(4)
+			pct, total, speed, eta = parse_progress_line(line)
+
+			if pct is not None:
+				pct_val = float(pct)
 
 				info = [
-					_("Percentage: {}%").format(int(pct)),
-					_("Total Size: {}").format(total),
+					_("Percentage: {}%").format(int(pct_val)),
+					_("Total Size: {}").format(total.strip()),
 					_("Downloaded: {}").format("N/A"),
-					_("ETA: {}").format(eta),
-					_("Speed: {}").format(speed)
+					_("ETA: {}").format(eta.strip()),
+					_("Speed: {}").format(speed.strip())
 				]
 
 				def safe_update(p, i):
@@ -101,7 +115,7 @@ class Downloader:
 							self.monitor1.SetString(index, value)
 					except RuntimeError:
 						pass
-				wx.CallAfter(safe_update, int(pct), info)
+				wx.CallAfter(safe_update, int(pct_val), info)
 
 			e = err_regex.search(line)
 			if e:
