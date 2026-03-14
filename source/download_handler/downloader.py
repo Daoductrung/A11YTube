@@ -72,7 +72,7 @@ class Downloader:
 
 		self.process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, **kwargs)
 
-		prog_regex = re.compile(r'\[download\]\s+([0-9\.]+)\%\s+of\s+([~0-9\.\w]+)\s+at\s+([0-9\.\w]+)\/s\s+ETA\s+([0-9:]+)')
+		prog_regex = re.compile(r'\[download\]\s+([0-9\.]+)\%\s+of\s+([~0-9\.\w\s]+?)\s+at\s+([0-9\.\w\s]+?)\/s\s+ETA\s+([0-9:]+|Unknown)')
 		err_regex = re.compile(r'ERROR:\s+(.*)')
 
 		for line in iter(self.process.stdout.readline, ''):
