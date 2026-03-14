@@ -59,7 +59,6 @@ class Downloader:
 		cmd = [
 			exe,
 			'--newline',
-			'--quiet',
 			'--no-warnings',
 			'--ignore-errors',
 			'--no-overwrites',
